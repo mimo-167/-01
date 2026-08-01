@@ -12,11 +12,11 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <Link className="wordmark" href="/" aria-label="朱墨作品集首页">
-        <span>ZM.</span>
-        <small>creative archive</small>
+        <span aria-hidden="true">❀</span>
+        <small>ZHU MO&apos;S PORTFOLIO</small>
       </Link>
       <button className="menu-button" aria-expanded={open} aria-controls="site-nav" onClick={() => setOpen(!open)}>
-        {open ? "关闭" : "菜单"}
+        {open ? "Close ×" : "Menu ≡"}
       </button>
       <nav id="site-nav" className={open ? "site-nav is-open" : "site-nav"} aria-label="主导航">
         {navItems.map(([href, label]) => (

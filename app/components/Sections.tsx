@@ -4,11 +4,11 @@ import type { Work } from "../data";
 import { WorkCard } from "./PortfolioUI";
 
 export function SectionTitle({ english, chinese, note }: { english: string; chinese: string; note?: string }) {
-  return <div className="section-title"><p>{english}</p><h2>{chinese}</h2>{note && <span>{note}</span>}</div>;
+  return <div className="section-title"><span className="title-doodle" aria-hidden="true">✦</span><p>{english}</p><h2>{chinese}</h2>{note && <span>{note}</span>}</div>;
 }
 
 export function PageIntro({ eyebrow, title, children }: { eyebrow: string; title: string; children: ReactNode }) {
-  return <section className="page-intro"><p className="eyebrow">{eyebrow}</p><h1>{title}</h1><div>{children}</div><span className="scribble-arrow" aria-hidden="true">↘</span></section>;
+  return <section className="page-intro"><span className="intro-star" aria-hidden="true">☆</span><p className="eyebrow">{eyebrow}</p><h1>{title}</h1><div>{children}</div><span className="scribble-arrow" aria-hidden="true">↝</span></section>;
 }
 
 export function WorkCollection({ works, base }: { works: Work[]; base: string }) {
@@ -32,5 +32,5 @@ export function DetailShell({ work, children }: { work: Work; children: ReactNod
 }
 
 export function FooterCTA() {
-  return <section className="footer-cta"><p className="eyebrow">LET’S CREATE SOMETHING</p><h2>期待和你一起做一些有意思的事</h2><p>如果你正在寻找一位愿意认真理解角色、玩家与内容的人，欢迎联系我。</p><div className="button-row"><Link className="button button-dark" href="/contact">联系我</Link><a className="button button-paper" href="/resume-zhu-mo.pdf" download>下载简历</a></div><small>© 2026 朱墨 · Designed as a living creative archive.</small></section>;
+  return <section className="footer-cta"><span className="footer-flower" aria-hidden="true">❀</span><p className="eyebrow">LET’S CREATE SOMETHING</p><h2>期待和你一起做一些有意思的事</h2><p>如果你正在寻找一位愿意认真理解角色、玩家与内容的人，欢迎联系我。</p><div className="button-row"><Link className="button button-dark" href="/contact">联系我 →</Link><a className="button button-paper" href="/resume-zhu-mo.pdf" download>下载简历 ↓</a></div><small>© 2026 ZHU MO&apos;S PORTFOLIO　|　MADE WITH LOVE. ♡</small></section>;
 }

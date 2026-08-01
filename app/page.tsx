@@ -8,37 +8,49 @@ export default function Home() {
   return (
     <main id="main" className="home-page">
       <section className="hero">
-        <span className="soft-shape shape-left" aria-hidden="true" />
-        <span className="soft-shape shape-right" aria-hidden="true" />
+        <span className="watercolor shape-left" aria-hidden="true" />
+        <span className="watercolor shape-right" aria-hidden="true" />
+        <span className="hero-doodle doodle-sparkles" aria-hidden="true">✧<br />✦</span>
+        <span className="hero-doodle doodle-note" aria-hidden="true">Stories<br />Create<br />Worlds.</span>
+        <span className="hero-doodle doodle-star" aria-hidden="true">☆<i>↙</i></span>
+        <span className="hero-doodle doodle-flower" aria-hidden="true">❀</span>
         <div className="hero-copy">
           <h1><span>WELCOME TO</span><span>MY UNIVERSE</span></h1>
           <p className="hero-signature">ZHU MO&apos;S PORTFOLIO</p>
-          <p className="role-line">女性向游戏文案 / 账号运营 / 活动策划</p>
-          <p className="hero-lead">观察角色如何被塑造，关系如何发生变化，<br />也思考一次内容如何让玩家愿意再次回来。</p>
+          <div className="hero-paper"><span aria-hidden="true" />写故事，造世界，留下心动的痕迹。♡<small>女性向游戏文案 / 账号运营 / 活动策划</small></div>
           <nav className="hero-links" aria-label="首页快速入口">
-            <Link href="/about">Understand Me</Link>
-            <a href="#selected">Selected Works</a>
-            <Link href="/accounts">Media Accounts</Link>
+            <Link href="/about"><b aria-hidden="true">♙</b>Understand Me</Link>
+            <Link href="/projects"><b aria-hidden="true">▱</b>Project Stories</Link>
+            <Link href="/accounts"><b aria-hidden="true">▦</b>Media Accounts</Link>
+            <Link href="/writing"><b aria-hidden="true">▧</b>Writing Gallery</Link>
           </nav>
         </div>
-        <a className="scroll-cue" href="#about" aria-label="向下阅读"><span>SCROLL TO EXPLORE</span>↓</a>
+        <a className="scroll-cue" href="#about" aria-label="向下阅读"><span>Scroll Down</span>⌄</a>
       </section>
 
       <section className="home-about" id="about">
-        <p className="ghost-title" aria-hidden="true">UNDERSTAND ME</p>
+        <span className="about-side-flower" aria-hidden="true">❀</span>
         <div className="open-book">
           <div className="book-page book-portrait">
-            <div className="portrait-placeholder"><span>墨</span></div>
-            <small>PHOTO / 待补充个人照片</small>
+            <div className="portrait-placeholder"><span>墨</span><i aria-hidden="true" /></div>
+            <small>记录灵感，也记录成长。</small>
           </div>
           <div className="binder-rings" aria-hidden="true"><i /><i /><i /></div>
           <div className="book-page book-copy">
             <p className="eyebrow">HELLO, I&apos;M ZHU MO</p>
-            <h2>这是我的世界。</h2>
-            <p>中山大学政治经济哲学专业在读，曾在腾讯微信读书负责内容运营。我写故事，也会继续追问故事怎样成为一次完整的玩家体验。</p>
+            <h2>Hello, I&apos;m Zhu Mo.</h2>
+            <p>热爱文字，热爱游戏，也热爱创造故事。这是我的小世界，在这里我整理我的思考，也展示我的作品与实践。</p>
+            <p>中山大学政治经济哲学专业在读，曾在腾讯微信读书负责内容运营。</p>
             <div className="profile-mini"><span>角色与情绪</span><span>内容与用户</span><span>活动与体验</span></div>
-            <Link className="text-link" href="/about">More about me ↗</Link>
+            <Link className="button button-dark" href="/about">了解我更多 →</Link>
           </div>
+          <span className="book-doodle book-flower" aria-hidden="true">❀</span>
+          <span className="book-doodle book-sparkle" aria-hidden="true">✧</span>
+        </div>
+        <div className="portal-row" aria-label="作品集主要栏目">
+          <Link href="/about"><b aria-hidden="true">♙</b><strong>Understand Me</strong><span>关于我<br />我的成长与兴趣<br />我的能力</span><small>点击进入 →</small></Link>
+          <Link href="/projects"><b aria-hidden="true">▱</b><strong>Project Stories</strong><span>游戏分析报告<br />活动策划案<br />短篇小说与文案练习</span><small>点击进入 →</small></Link>
+          <Link href="/writing"><b aria-hidden="true">▧</b><strong>Writing Gallery</strong><span>原创作品合集<br />灵感笔记<br />随手涂鸦</span><small>点击进入 →</small></Link>
         </div>
       </section>
 
