@@ -1,23 +1,7 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import { findWomenWritingWork, womenWritingWorks } from "../../women-writing-data";
+import type { WomenWritingWork } from "../women-writing-data";
 
-export function generateStaticParams() {
-  return womenWritingWorks.map(({ slug }) => ({ slug }));
-}
-
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params;
-  const work = findWomenWritingWork(slug);
-  return work ? { title: work.title, description: `${work.type}女性向文字作品，作者朱墨 / Momo。` } : {};
-}
-
-export default async function WomenWritingDetail({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const work = findWomenWritingWork(slug);
-  if (!work) notFound();
-
+export function WritingReader({ work }: { work: WomenWritingWork }) {
   return (
     <main id="main" className="writing-reader-page">
       <header className="writing-reader-hero">

@@ -48,7 +48,3 @@ export const womenWritingWorks: WomenWritingWork[] = [
     content: prepareContent(gentleUncleRaw, "GB温柔到几乎无底线的小叔叔1", "2024.4写"),
   },
 ];
-
-export function findWomenWritingWork(slug: string) {
-  return womenWritingWorks.find((work) => work.slug === slug);
-}
