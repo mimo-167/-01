@@ -1,14 +1,15 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { ReactNode } from "react";
 import {
   contact,
   productWorks,
   profile,
   socialAccounts,
-  writingWorks,
   type PortfolioImage,
   type SocialNote,
 } from "./portfolio-data";
+import { womenWritingWorks } from "./women-writing-data";
 
 function MediaFrame({
   image,
@@ -168,14 +169,14 @@ export default function Home() {
         <div className="section-shell">
           <SectionHeading index="02" english="WRITING WORKS" title="女性向文字作品" />
           <div className="writing-wall">
-            {writingWorks.map((work, index) => (
-              <article className={`writing-poster tone-${index === 0 ? "rose" : index === 1 ? "sage" : "sand"}`} key={work.id}>
+            {womenWritingWorks.map((work, index) => (
+              <article className={`writing-poster writing-poster-text tone-${index % 3 === 0 ? "rose" : index % 3 === 1 ? "sage" : "sand"}`} key={work.slug}>
                 <span className="poster-pin" aria-hidden="true" />
-                <MediaFrame image={work.cover} className="writing-cover" sizes="(max-width: 640px) 100vw, 360px" />
+                <span className="writing-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
                 <div className="writing-poster-copy">
-                  <span className="work-type">{work.type}</span>
+                  <div className="writing-labels"><span className="work-type">{work.type}</span>{work.date ? <small>{work.date}</small> : null}</div>
                   <h3>{work.title}</h3>
-                  <OptionalLink className="text-link" href={work.url} external={false}>查看全文 ↗</OptionalLink>
+                  <Link className="text-link" href={`/women-writing/${work.slug}`}>查看全文 ↗</Link>
                 </div>
               </article>
             ))}

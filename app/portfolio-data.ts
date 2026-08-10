@@ -82,30 +82,6 @@ export const socialAccounts: SocialAccount[] = [
   },
 ];
 
-export const writingWorks = [
-  {
-    id: "fan-fiction",
-    title: "作品名称待补充",
-    type: "同人",
-    cover: emptyImage("女性向同人作品封面", "作品封面 / 代表截图"),
-    url: "",
-  },
-  {
-    id: "phone-fiction",
-    title: "作品名称待补充",
-    type: "捡手机文学",
-    cover: emptyImage("捡手机文学代表截图", "聊天记录 / 代表截图"),
-    url: "",
-  },
-  {
-    id: "original-fiction",
-    title: "作品名称待补充",
-    type: "原创短篇",
-    cover: emptyImage("女性向原创短篇封面", "作品封面 / 代表截图"),
-    url: "",
-  },
-];
-
 export const productWorks = [
   {
     id: "ai-tarot",

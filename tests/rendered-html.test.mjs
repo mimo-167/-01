@@ -20,10 +20,33 @@ test("server-renders the finished portfolio", async () => {
   assert.match(html, /1\.3W\+/);
   assert.match(html, /小红书作品/);
   assert.match(html, /女性向文字作品/);
+  assert.match(html, /NG：我是第一个被你这样对待的吗/);
+  assert.match(html, /这种小三上位的才会最害怕小三啊/);
+  assert.match(html, /为了拉拢你，天堂和地狱分别派出了天使和魅魔/);
+  assert.match(html, /温柔到几乎无底线的小叔叔/);
+  assert.doesNotMatch(html, /作品封面 \/ 代表截图|聊天记录 \/ 代表截图/);
   assert.match(html, /AI 塔罗在线占卜网站/);
   assert.match(html, /简历与联系方式/);
   assert.doesNotMatch(html, /Case Study|Coming Soon|游戏观察/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|Your site is taking shape/);
+});
+
+test("renders the supplied women-oriented writing as readable text", async () => {
+  const works = [
+    ["/women-writing/ng-am-i-the-first", "NG：我是第一个被你这样对待的吗", "哪怕再疼痛再难耐"],
+    ["/women-writing/afraid-of-the-other-woman", "这种小三上位的才会最害怕小三啊", "这可是他勾引你的资本"],
+    ["/women-writing/angel-and-demon", "为了拉拢你，天堂和地狱分别派出了天使和魅魔", "你快噶了"],
+    ["/women-writing/gentle-uncle-1", "温柔到几乎无底线的小叔叔", "门外下起了雨"],
+  ];
+
+  for (const [pathname, title, excerpt] of works) {
+    const response = await render(pathname);
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    assert.match(html, new RegExp(title));
+    assert.match(html, new RegExp(excerpt));
+    assert.match(html, /返回文字作品/);
+  }
 });
 
 test("ships editable content and downloadable artifacts", async () => {
@@ -34,6 +57,10 @@ test("ships editable content and downloadable artifacts", async () => {
     access(new URL("../content/analysis/how-romantic-scene-works.md", import.meta.url)),
     access(new URL("../content/projects/letters-from-tomorrow.md", import.meta.url)),
     access(new URL("../content/accounts/big-dog-reading-account.md", import.meta.url)),
+    access(new URL("../作品集/女性向文本创作/同人文/NG：我是第一个被你这样对待的吗.txt", import.meta.url)),
+    access(new URL("../作品集/女性向文本创作/同人文/这种小三上位的才会最害怕小三啊.txt", import.meta.url)),
+    access(new URL("../作品集/女性向文本创作/原创/【GB】为了拉拢你，天堂和地狱分别派出了天使和魅魔.txt", import.meta.url)),
+    access(new URL("../作品集/女性向文本创作/原创/GB温柔到几乎无底线的小叔叔1.txt", import.meta.url)),
     access(new URL("../public/resume-zhu-mo.pdf", import.meta.url)),
     access(new URL("../public/og.png", import.meta.url)),
   ]);
