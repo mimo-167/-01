@@ -125,10 +125,8 @@ export const accounts = [
 export const allWorks = [...analyses, ...projects, ...writings];
 
 export const navItems = [
-  ["/about", "Understand Me"],
-  ["/projects", "Project Stories"],
-  ["/accounts", "Media Accounts"],
-  ["/writing", "Writing Gallery"],
-  ["/analysis", "Game Notes"],
-  ["/resume", "Resume"],
+  ["/#xiaohongshu", "小红书作品"],
+  ["/#writing-works", "文字作品"],
+  ["/#product-works", "网站 / 产品"],
+  ["/#resume", "简历与联系"],
 ] as const;

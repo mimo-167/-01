@@ -1,92 +1,225 @@
-import Link from "next/link";
-import { accounts, analyses, projects, writings } from "./data";
-import { FooterCTA, SectionTitle } from "./components/Sections";
-import { WorkCard } from "./components/PortfolioUI";
+import Image from "next/image";
+import type { ReactNode } from "react";
+import {
+  contact,
+  productWorks,
+  profile,
+  socialAccounts,
+  writingWorks,
+  type PortfolioImage,
+  type SocialNote,
+} from "./portfolio-data";
+
+function MediaFrame({
+  image,
+  className = "",
+  sizes = "(max-width: 640px) 100vw, 50vw",
+}: {
+  image: PortfolioImage;
+  className?: string;
+  sizes?: string;
+}) {
+  return (
+    <div className={`portfolio-media ${className}`}>
+      {image.src ? (
+        <Image src={image.src} alt={image.alt} fill sizes={sizes} />
+      ) : (
+        <div className="media-placeholder" role="img" aria-label={`${image.alt}，素材待补充`}>
+          <span aria-hidden="true">▧</span>
+          <small>{image.placeholder}</small>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function OptionalLink({
+  href,
+  className,
+  children,
+  external = true,
+}: {
+  href: string;
+  className: string;
+  children: ReactNode;
+  external?: boolean;
+}) {
+  if (!href) {
+    return (
+      <span className={`${className} is-disabled`} aria-disabled="true" title="链接待补充">
+        {children}
+      </span>
+    );
+  }
+
+  return (
+    <a href={href} className={className} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined}>
+      {children}
+    </a>
+  );
+}
+
+function SectionHeading({ index, english, title }: { index: string; english: string; title: string }) {
+  return (
+    <header className="portfolio-heading">
+      <p className="eyebrow">{index} / {english}</p>
+      <h2>{title}</h2>
+      <span aria-hidden="true" />
+    </header>
+  );
+}
+
+function SocialNoteCard({ note, index }: { note: SocialNote; index: number }) {
+  const card = (
+    <>
+      <MediaFrame image={note.cover} className="note-cover" sizes="(max-width: 640px) 50vw, 260px" />
+      <div className="note-copy">
+        <h4>{note.title}</h4>
+        <div className="note-metrics" aria-label="笔记互动数据">
+          <span title="点赞"><b aria-hidden="true">♡</b>{note.likes}</span>
+          <span title="收藏"><b aria-hidden="true">☆</b>{note.favorites}</span>
+          <span title="评论"><b aria-hidden="true">◌</b>{note.comments}</span>
+        </div>
+      </div>
+    </>
+  );
+
+  return note.url ? (
+    <a className={`social-note-card rotate-${index % 3}`} href={note.url} target="_blank" rel="noreferrer">
+      {card}
+    </a>
+  ) : (
+    <article className={`social-note-card rotate-${index % 3}`}>{card}</article>
+  );
+}
 
 export default function Home() {
-  const selected = [analyses[0], projects[0], writings[0], analyses[1], writings[1]];
   return (
-    <main id="main" className="home-page">
-      <section className="hero">
+    <main id="main" className="home-page portfolio-home">
+      <section className="hero portfolio-hero" id="top">
         <span className="watercolor shape-left" aria-hidden="true" />
         <span className="watercolor shape-right" aria-hidden="true" />
         <span className="hero-doodle doodle-sparkles" aria-hidden="true">✧<br />✦</span>
-        <span className="hero-doodle doodle-note" aria-hidden="true">Stories<br />Create<br />Worlds.</span>
+        <span className="hero-doodle doodle-note" aria-hidden="true">Works<br />Worth<br />Seeing.</span>
         <span className="hero-doodle doodle-star" aria-hidden="true">☆<i>↙</i></span>
         <span className="hero-doodle doodle-flower" aria-hidden="true">❀</span>
         <div className="hero-copy">
-          <h1><span>WELCOME TO</span><span>MY UNIVERSE</span></h1>
-          <p className="hero-signature">ZHU MO&apos;S PORTFOLIO</p>
-          <div className="hero-paper"><span aria-hidden="true" />写故事，造世界，留下心动的痕迹。♡<small>女性向游戏文案 / 账号运营 / 活动策划</small></div>
+          <p className="eyebrow hero-eyebrow">PERSONAL PORTFOLIO</p>
+          <h1><span>{profile.name}</span><span>/ {profile.englishName}</span></h1>
+          <p className="hero-signature">ZHU MO&apos;S WORK ARCHIVE</p>
+          <div className="hero-metrics" aria-label="核心数据">
+            {profile.stats.map((stat) => (
+              <div key={stat.label}>
+                <strong>{stat.value}</strong>
+                <span>{stat.label}</span>
+              </div>
+            ))}
+          </div>
           <nav className="hero-links" aria-label="首页快速入口">
-            <Link href="/about"><b aria-hidden="true">♙</b>Understand Me</Link>
-            <Link href="/projects"><b aria-hidden="true">▱</b>Project Stories</Link>
-            <Link href="/accounts"><b aria-hidden="true">▦</b>Media Accounts</Link>
-            <Link href="/writing"><b aria-hidden="true">▧</b>Writing Gallery</Link>
+            <OptionalLink className="hero-action" href={profile.personalSiteUrl}><b aria-hidden="true">▱</b>查看个人网站</OptionalLink>
+            <a className="hero-action" href="/resume-zhu-mo.pdf" target="_blank" rel="noreferrer"><b aria-hidden="true">▧</b>查看简历</a>
+            <a className="hero-action" href="#contact"><b aria-hidden="true">♡</b>联系我</a>
           </nav>
         </div>
-        <a className="scroll-cue" href="#about" aria-label="向下阅读"><span>Scroll Down</span>⌄</a>
+        <a className="scroll-cue" href="#xiaohongshu" aria-label="向下查看作品"><span>View Works</span>⌄</a>
       </section>
 
-      <section className="home-about" id="about">
-        <span className="about-side-flower" aria-hidden="true">❀</span>
-        <div className="open-book">
-          <div className="book-page book-portrait">
-            <div className="portrait-placeholder"><span>墨</span><i aria-hidden="true" /></div>
-            <small>记录灵感，也记录成长。</small>
+      <section className="section-shell portfolio-section social-section" id="xiaohongshu">
+        <SectionHeading index="01" english="XIAOHONGSHU WORKS" title="小红书作品" />
+        <div className="social-account-list">
+          {socialAccounts.map((account, accountIndex) => (
+            <article className="social-account-paper" key={account.id}>
+              <span className="paper-tape" aria-hidden="true" />
+              <div className="social-account-head">
+                <MediaFrame image={account.profile} className="account-profile-shot" sizes="(max-width: 760px) 100vw, 420px" />
+                <div className="social-account-copy">
+                  <p className="eyebrow">ACCOUNT FILE / {String(accountIndex + 1).padStart(2, "0")}</p>
+                  <h3>{account.name}</h3>
+                  <dl className="account-facts">
+                    <div><dt>运营时间</dt><dd>{account.operationPeriod}</dd></div>
+                    <div><dt>粉丝数</dt><dd>{account.followers}</dd></div>
+                    <div><dt>获赞 / 收藏</dt><dd>{account.likesAndFavorites}</dd></div>
+                    <div><dt>最高单篇</dt><dd>{account.topPost}</dd></div>
+                  </dl>
+                  <OptionalLink className="button button-dark account-link" href={account.url}>打开小红书主页 ↗</OptionalLink>
+                </div>
+              </div>
+
+              {account.performance ? (
+                <section className="performance-paper" aria-labelledby={`${account.id}-performance`}>
+                  <p className="hand-note" id={`${account.id}-performance`}>账号阶段数据</p>
+                  <MediaFrame image={account.performance} className="performance-shot" sizes="(max-width: 760px) 100vw, 900px" />
+                </section>
+              ) : null}
+
+              <div className="notes-heading">
+                <p className="eyebrow">SELECTED NOTES</p>
+                <h3>代表笔记</h3>
+              </div>
+              <div className="note-waterfall">
+                {account.notes.map((note, noteIndex) => <SocialNoteCard key={note.id} note={note} index={noteIndex} />)}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="portfolio-section writing-wall-section" id="writing-works">
+        <div className="section-shell">
+          <SectionHeading index="02" english="WRITING WORKS" title="女性向文字作品" />
+          <div className="writing-wall">
+            {writingWorks.map((work, index) => (
+              <article className={`writing-poster tone-${index === 0 ? "rose" : index === 1 ? "sage" : "sand"}`} key={work.id}>
+                <span className="poster-pin" aria-hidden="true" />
+                <MediaFrame image={work.cover} className="writing-cover" sizes="(max-width: 640px) 100vw, 360px" />
+                <div className="writing-poster-copy">
+                  <span className="work-type">{work.type}</span>
+                  <h3>{work.title}</h3>
+                  <OptionalLink className="text-link" href={work.url} external={false}>查看全文 ↗</OptionalLink>
+                </div>
+              </article>
+            ))}
           </div>
-          <div className="binder-rings" aria-hidden="true"><i /><i /><i /></div>
-          <div className="book-page book-copy">
-            <p className="eyebrow">HELLO, I&apos;M ZHU MO</p>
-            <h2>Hello, I&apos;m Zhu Mo.</h2>
-            <p>热爱文字，热爱游戏，也热爱创造故事。这是我的小世界，在这里我整理我的思考，也展示我的作品与实践。</p>
-            <p>中山大学政治经济哲学专业在读，曾在腾讯微信读书负责内容运营。</p>
-            <div className="profile-mini"><span>角色与情绪</span><span>内容与用户</span><span>活动与体验</span></div>
-            <Link className="button button-dark" href="/about">了解我更多 →</Link>
-          </div>
-          <span className="book-doodle book-flower" aria-hidden="true">❀</span>
-          <span className="book-doodle book-sparkle" aria-hidden="true">✧</span>
-        </div>
-        <div className="portal-row" aria-label="作品集主要栏目">
-          <Link href="/about"><b aria-hidden="true">♙</b><strong>Understand Me</strong><span>关于我<br />我的成长与兴趣<br />我的能力</span><small>点击进入 →</small></Link>
-          <Link href="/projects"><b aria-hidden="true">▱</b><strong>Project Stories</strong><span>游戏分析报告<br />活动策划案<br />短篇小说与文案练习</span><small>点击进入 →</small></Link>
-          <Link href="/writing"><b aria-hidden="true">▧</b><strong>Writing Gallery</strong><span>原创作品合集<br />灵感笔记<br />随手涂鸦</span><small>点击进入 →</small></Link>
         </div>
       </section>
 
-      <section className="section-shell selected-section" id="selected">
-        <SectionTitle english="SELECTED WORKS" chinese="一些最能代表我的作品" note="写作、分析、策划与运营——每一页都留下判断和复盘。" />
-        <div className="work-grid selected-grid">{selected.map((work, index) => <WorkCard key={work.slug} work={work} href={`${work.category === "活动策划" ? "/projects" : work.category === "原创短篇" || work.category === "人物片段" ? "/writing" : "/analysis"}/${work.slug}`} index={index} />)}</div>
+      <section className="section-shell portfolio-section product-section" id="product-works">
+        <SectionHeading index="03" english="WEB / PRODUCT" title="网站 / 产品作品" />
+        {productWorks.map((product) => (
+          <article className="product-paper" key={product.id}>
+            <div className="product-title-row">
+              <div>
+                <p className="eyebrow">FEATURED PRODUCT</p>
+                <h3>{product.title}</h3>
+                <div className="tag-row">{product.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+              </div>
+              <OptionalLink className="button button-dark" href={product.url}>打开网站 ↗</OptionalLink>
+            </div>
+            <MediaFrame image={product.hero} className="product-hero-shot" sizes="(max-width: 760px) 100vw, 1100px" />
+            <div className="product-shot-grid">
+              {product.screenshots.map((screenshot, index) => (
+                <MediaFrame key={screenshot.placeholder} image={screenshot} className={`product-core-shot rotate-${index % 3}`} sizes="(max-width: 640px) 100vw, 360px" />
+              ))}
+            </div>
+          </article>
+        ))}
       </section>
 
-      <section className="split-feature">
-        <div className="split-heading"><p>01 / WRITING</p><h2>STORIES<br />I WROTE</h2><span>我写下的故事</span></div>
-        <div className="mini-list">{writings.map((work, i) => <Link href={`/writing/${work.slug}`} key={work.slug}><span>0{i + 1}</span><div><strong>{work.title}</strong><small>{work.summary}</small></div><b>↗</b></Link>)}</div>
-      </section>
-
-      <section className="analysis-feature">
-        <SectionTitle english="02 / GAME OBSERVATION" chinese="我如何阅读一款游戏" note="从玩家感受出发，回到角色、节奏、机制和成本。" />
-        <div className="analysis-board">{analyses.map((work, i) => <article key={work.slug}><span className="board-number">0{i + 1}</span><p className="eyebrow">{work.category}</p><h3>{work.title}</h3><p>{work.summary}</p><Link className="text-link" href={`/analysis/${work.slug}`}>Read the full story ↗</Link></article>)}</div>
-      </section>
-
-      <section className="project-feature">
-        <p className="ghost-title" aria-hidden="true">PROJECT STORY</p>
-        <div className="project-frame">
-          <span className="project-index">03 / FROM IDEA TO EXPERIENCE</span>
-          <h2>{projects[0].title}</h2><p>{projects[0].summary}</p>
-          <div className="flow-line"><span>进入活动</span><b>→</b><span>完成互动</span><b>→</b><span>解锁来信</span><b>→</b><span>次日回访</span></div>
-          <Link className="button button-dark" href={`/projects/${projects[0].slug}`}>查看完整方案 ↗</Link>
+      <section className="resume-contact-section" id="resume">
+        <span className="footer-flower" aria-hidden="true">❀</span>
+        <p className="eyebrow">04 / RESUME & CONTACT</p>
+        <h2>简历与联系方式</h2>
+        <div className="resume-actions">
+          <a className="button button-dark" href="/resume-zhu-mo.pdf" target="_blank" rel="noreferrer">查看简历 ↗</a>
+          <a className="button button-paper" href="/resume-zhu-mo.pdf" download>下载 PDF ↓</a>
         </div>
+        <div className="contact-paper" id="contact">
+          <span>EMAIL</span>
+          {contact.emailUrl ? <a href={contact.emailUrl}>{contact.email}</a> : <strong>{contact.email}</strong>}
+          {contact.phone ? <><span>PHONE</span><strong>{contact.phone}</strong></> : null}
+        </div>
+        <small>© 2026 ZHU MO / MOMO · MADE WITH LOVE. ♡</small>
       </section>
-
-      <section className="section-shell accounts-home">
-        <SectionTitle english="04 / ACCOUNTS I’VE BUILT" chinese="我运营过的账号" note="不同账号，不只是换一种选题，而是重新理解一次用户。" />
-        <div className="account-strip">{accounts.map((account, i) => <Link href={`/accounts/${account.slug}`} className={`account-card tone-${account.tone}`} key={account.slug}><span>ACCOUNT / 0{i + 1}</span><h3>{account.title}</h3><p>{account.source}<br />{account.role}</p><div>{account.metrics.slice(0, 2).map((metric) => <strong key={metric}>{metric}</strong>)}</div><small>View case ↗</small></Link>)}</div>
-        <Link className="text-link" href="/accounts">查看全部账号矩阵 ↗</Link>
-      </section>
-
-      <section className="operation-note"><div><p className="eyebrow">CONTENT & GROWTH</p><h2>内容如何被看见</h2><p>用户洞察 → 选题判断 → 内容生产 → 发布测试 → 数据复盘 → 策略调整</p><Link className="text-link" href="/operations">完整运营案例 ↗</Link></div><div className="metric-notes"><span><b>6</b> 个不同内容赛道</span><span><b>1.3万</b> 重点账号粉丝</span><span><b>46万</b> 累计获赞</span></div></section>
-      <FooterCTA />
     </main>
   );
 }

@@ -14,11 +14,15 @@ test("server-renders the finished portfolio", async () => {
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
-  assert.match(html, /WELCOME TO/);
-  assert.match(html, /MY UNIVERSE/);
-  assert.match(html, /女性向游戏文案/);
-  assert.match(html, /一段心动剧情是怎样被设计出来的/);
-  assert.match(html, /ACCOUNTS I/i);
+  assert.match(html, /PERSONAL PORTFOLIO/);
+  assert.match(html, /朱墨/);
+  assert.match(html, /Momo/);
+  assert.match(html, /1\.3W\+/);
+  assert.match(html, /小红书作品/);
+  assert.match(html, /女性向文字作品/);
+  assert.match(html, /AI 塔罗在线占卜网站/);
+  assert.match(html, /简历与联系方式/);
+  assert.doesNotMatch(html, /Case Study|Coming Soon|游戏观察/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|Your site is taking shape/);
 });
 
