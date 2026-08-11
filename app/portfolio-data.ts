@@ -55,7 +55,7 @@ export const socialAccounts: SocialAccount[] = [
   {
     id: "big-king-progress",
     name: "比格大王在假装进步",
-    operationPeriod: "约半年",
+    operationPeriod: "2025年4月—2026年1月",
     followers: "1.3 万",
     likesAndFavorites: "47.4 万",
     topPost: "10 万+赞",
@@ -166,7 +166,7 @@ export const socialAccounts: SocialAccount[] = [
   {
     id: "she-evolution",
     name: "SHE进化论",
-    operationPeriod: "资料未提供",
+    operationPeriod: "2025年11月—2026年1月",
     followers: "8462",
     likesAndFavorites: "29.6 万",
     topPost: "4863 赞 / 6086 收藏",
@@ -192,7 +192,7 @@ export const socialAccounts: SocialAccount[] = [
   {
     id: "chestnut-crisp",
     name: "一颗栗子酥",
-    operationPeriod: "资料未提供",
+    operationPeriod: "2025年7月—2026年1月",
     followers: "4895",
     likesAndFavorites: "11.0 万",
     topPost: "9770 赞",
@@ -232,7 +232,7 @@ export const socialAccounts: SocialAccount[] = [
   {
     id: "quiet-letters",
     name: "她也不爱说话",
-    operationPeriod: "资料未提供",
+    operationPeriod: "2025年8月—2025年9月",
     followers: "3574",
     likesAndFavorites: "16.1 万",
     topPost: "1.1 万赞",
@@ -263,9 +263,9 @@ export const socialAccounts: SocialAccount[] = [
   {
     id: "reading-now",
     name: "正在书入中",
-    operationPeriod: "资料未提供",
-    followers: "资料未提供",
-    likesAndFavorites: "资料未提供",
+    operationPeriod: "2025年9月—2026年1月",
+    followers: "4613",
+    likesAndFavorites: "8.2 万",
     topPost: "5834 赞（已上传样本）",
     url: "",
     profile: emptyImage("正在书入中账号首页截图尚未上传", "账号首页截图待补充"),
@@ -303,9 +303,9 @@ export const socialAccounts: SocialAccount[] = [
   {
     id: "snack-reviewer",
     name: "电子榨菜品鉴大王",
-    operationPeriod: "资料未提供",
-    followers: "资料未提供",
-    likesAndFavorites: "资料未提供",
+    operationPeriod: "未提供",
+    followers: "1709",
+    likesAndFavorites: "22.3 万",
     topPost: "1.5 万赞（已上传样本）",
     url: "",
     profile: emptyImage("电子榨菜品鉴大王账号首页截图尚未上传", "账号首页截图待补充"),

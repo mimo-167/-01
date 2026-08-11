@@ -32,6 +32,19 @@ test("server-renders the finished portfolio", async () => {
   assert.match(html, /src="\/portfolio\/xiaohongshu\/big-profile\.png"/);
   assert.match(html, /src="\/portfolio\/xiaohongshu\/big-performance\.jpg"/);
   assert.match(html, /账号阶段数据 · (?:<!-- -->)?7(?:<!-- -->)? 张/);
+  for (const accountInfo of [
+    "2025年4月—2026年1月",
+    "2025年11月—2026年1月",
+    "2025年7月—2026年1月",
+    "2025年8月—2025年9月",
+    "2025年9月—2026年1月",
+    "4613",
+    "8.2 万",
+    "1709",
+    "22.3 万",
+  ]) {
+    assert.match(html, new RegExp(accountInfo));
+  }
   for (const imageName of [
     "big-data-account-overview.jpg",
     "big-data-creator-center.jpg",
