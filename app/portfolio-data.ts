@@ -272,9 +272,14 @@ export const socialAccounts: SocialAccount[] = [
     operationPeriod: "2025年9月—2026年1月",
     followers: "4613",
     likesAndFavorites: "8.2 万",
-    topPost: "5834 赞（已上传样本）",
+    topPost: "5834 赞",
     url: "https://xhslink.cn/m/2Bz5p5lEgRs",
-    profile: emptyImage("正在书入中账号首页截图尚未上传", "账号首页截图待补充"),
+    profile: {
+      src: "/portfolio/xiaohongshu/reading-profile.jpg",
+      alt: "正在书入中小红书账号首页截图",
+      placeholder: "账号首页截图",
+      aspectRatio: "1080 / 2414",
+    },
     notes: [
       {
         id: "reading-bankrupt-heir",
@@ -312,9 +317,14 @@ export const socialAccounts: SocialAccount[] = [
     operationPeriod: "未提供",
     followers: "1709",
     likesAndFavorites: "22.3 万",
-    topPost: "1.5 万赞（已上传样本）",
+    topPost: "1.5 万赞",
     url: "https://xhslink.cn/m/8nhy8Ska4OR",
-    profile: emptyImage("电子榨菜品鉴大王账号首页截图尚未上传", "账号首页截图待补充"),
+    profile: {
+      src: "/portfolio/xiaohongshu/snack-profile.jpg",
+      alt: "电子榨菜品鉴大王小红书账号首页截图",
+      placeholder: "账号首页截图",
+      aspectRatio: "1080 / 2414",
+    },
     notes: [
       {
         id: "snack-xiha",

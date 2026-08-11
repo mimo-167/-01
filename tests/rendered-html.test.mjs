@@ -50,6 +50,9 @@ test("server-renders the finished portfolio", async () => {
   assert.doesNotMatch(html, /href="https:\/\/www\.xiaohongshu\.com\/explore\//);
   assert.match(html, /src="\/portfolio\/xiaohongshu\/big-profile\.png"/);
   assert.match(html, /src="\/portfolio\/xiaohongshu\/big-performance\.jpg"/);
+  assert.match(html, /src="\/portfolio\/xiaohongshu\/reading-profile\.jpg"/);
+  assert.match(html, /src="\/portfolio\/xiaohongshu\/snack-profile\.jpg"/);
+  assert.doesNotMatch(html, /已上传样本/);
   assert.match(html, /过往数据/);
   for (const accountInfo of [
     "2025年4月—2026年1月",
@@ -189,6 +192,15 @@ test("AI 塔罗的五张页面截图可解码且保留真实尺寸", async () =>
   }
 });
 
+test("新增的小红书账号主页截图可解码且保留完整长图", async () => {
+  for (const name of ["reading-profile.jpg", "snack-profile.jpg"]) {
+    const imageFile = new URL(`../public/portfolio/xiaohongshu/${name}`, import.meta.url);
+    const image = await loadImage(await readFile(imageFile));
+    assert.equal(image.width, 1080);
+    assert.equal(image.height, 2414);
+  }
+});
+
 test("renders the supplied women-oriented writing as readable text", async () => {
   const works = [
     ["/women-writing/ng-am-i-the-first", "NG：我是第一个被你这样对待的吗", "哪怕再疼痛再难耐"],
@@ -231,6 +243,8 @@ test("ships editable content and downloadable artifacts", async () => {
     access(new URL("../public/portfolio/products/tarot-blog.png", import.meta.url)),
     access(new URL("../public/portfolio/products/tarot-card-selection.png", import.meta.url)),
     access(new URL("../public/portfolio/products/tarot-future-lover.png", import.meta.url)),
+    access(new URL("../public/portfolio/xiaohongshu/reading-profile.jpg", import.meta.url)),
+    access(new URL("../public/portfolio/xiaohongshu/snack-profile.jpg", import.meta.url)),
   ]);
   const resumeFile = await stat(new URL("../public/resume-zhu-mo.pdf", import.meta.url));
   assert.ok(resumeFile.size > 200_000);
