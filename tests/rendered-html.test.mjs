@@ -27,6 +27,17 @@ test("server-renders the finished portfolio", async () => {
   assert.match(html, /她也不爱说话/);
   assert.match(html, /正在书入中/);
   assert.match(html, /电子榨菜品鉴大王/);
+  for (const accountUrl of [
+    "https://xhslink.cn/m/1eq9CCllgpr",
+    "https://xhslink.cn/m/2Bz5p5lEgRs",
+    "https://xhslink.cn/m/8nhy8Ska4OR",
+    "https://xhslink.cn/m/7smAnr1BZuy",
+    "https://xhslink.cn/m/1r9iV8Nf2tj",
+    "https://xhslink.cn/m/7MAAfrKP37G",
+  ]) {
+    assert.match(html, new RegExp(`href="${accountUrl}"`));
+  }
+  assert.equal((html.match(/href="https:\/\/xhslink\.cn\/m\//g) ?? []).length, 6);
   assert.match(html, /宝宝 其实你不喜欢边焦虑边玩手机的 对吗/);
   assert.match(html, /图片稍后补充/);
   assert.equal((html.match(/href="\/xiaohongshu\//g) ?? []).length, 12);

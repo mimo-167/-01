@@ -59,7 +59,7 @@ export const socialAccounts: SocialAccount[] = [
     followers: "1.3 万",
     likesAndFavorites: "47.4 万",
     topPost: "10 万+赞",
-    url: "",
+    url: "https://xhslink.cn/m/1eq9CCllgpr",
     profile: {
       src: "/portfolio/xiaohongshu/big-profile.png",
       alt: "比格大王在假装进步小红书账号首页截图",
@@ -166,7 +166,7 @@ export const socialAccounts: SocialAccount[] = [
     followers: "8462",
     likesAndFavorites: "29.6 万",
     topPost: "4863 赞 / 6086 收藏",
-    url: "",
+    url: "https://xhslink.cn/m/7MAAfrKP37G",
     profile: {
       src: "/portfolio/xiaohongshu/she-profile.jpg",
       alt: "SHE进化论小红书账号首页截图",
@@ -192,7 +192,7 @@ export const socialAccounts: SocialAccount[] = [
     followers: "4895",
     likesAndFavorites: "11.0 万",
     topPost: "9770 赞",
-    url: "",
+    url: "https://xhslink.cn/m/7smAnr1BZuy",
     profile: {
       src: "/portfolio/xiaohongshu/chestnut-profile.jpg",
       alt: "一颗栗子酥小红书账号首页截图",
@@ -232,7 +232,7 @@ export const socialAccounts: SocialAccount[] = [
     followers: "3574",
     likesAndFavorites: "16.1 万",
     topPost: "1.1 万赞",
-    url: "",
+    url: "https://xhslink.cn/m/1r9iV8Nf2tj",
     profile: {
       src: "/portfolio/xiaohongshu/quiet-profile.jpg",
       alt: "她也不爱说话小红书账号首页截图",
@@ -263,7 +263,7 @@ export const socialAccounts: SocialAccount[] = [
     followers: "4613",
     likesAndFavorites: "8.2 万",
     topPost: "5834 赞（已上传样本）",
-    url: "",
+    url: "https://xhslink.cn/m/2Bz5p5lEgRs",
     profile: emptyImage("正在书入中账号首页截图尚未上传", "账号首页截图待补充"),
     notes: [
       {
@@ -303,7 +303,7 @@ export const socialAccounts: SocialAccount[] = [
     followers: "1709",
     likesAndFavorites: "22.3 万",
     topPost: "1.5 万赞（已上传样本）",
-    url: "",
+    url: "https://xhslink.cn/m/8nhy8Ska4OR",
     profile: emptyImage("电子榨菜品鉴大王账号首页截图尚未上传", "账号首页截图待补充"),
     notes: [
       {
