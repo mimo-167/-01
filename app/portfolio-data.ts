@@ -217,7 +217,12 @@ export const socialAccounts: SocialAccount[] = [
       {
         id: "chestnut-game-return",
         title: "退游后，你推来找你了",
-        cover: emptyImage("该笔记图片待整理", "图片稍后补充"),
+        cover: {
+          src: "/portfolio/xiaohongshu/chestnut-game-return-v2-01.png",
+          alt: "退游后，你推来找你了笔记封面",
+          placeholder: "代表笔记封面",
+          aspectRatio: "1080 / 1440",
+        },
         likes: "2678",
         favorites: "225",
         comments: "244",

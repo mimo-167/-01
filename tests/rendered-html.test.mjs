@@ -40,7 +40,8 @@ test("server-renders the finished portfolio", async () => {
   }
   assert.equal((html.match(/href="https:\/\/xhslink\.cn\/m\//g) ?? []).length, 6);
   assert.match(html, /宝宝 其实你不喜欢边焦虑边玩手机的 对吗/);
-  assert.match(html, /图片稍后补充/);
+  assert.doesNotMatch(html, /图片稍后补充/);
+  assert.match(html, /src="\/portfolio\/xiaohongshu\/chestnut-game-return-v2-01\.png"/);
   assert.equal((html.match(/href="\/xiaohongshu\//g) ?? []).length, 12);
   assert.doesNotMatch(html, /href="https:\/\/www\.xiaohongshu\.com\/explore\//);
   assert.match(html, /src="\/portfolio\/xiaohongshu\/big-profile\.png"/);
