@@ -19,6 +19,10 @@ export type SocialNote = {
   id: string;
   title: string;
   cover: PortfolioImage;
+  video?: {
+    src: string;
+    mimeType: "video/mp4";
+  };
   likes: string;
   favorites: string;
   comments: string;
@@ -182,7 +186,11 @@ export const socialAccounts: SocialAccount[] = [
       {
         id: "she-growth",
         title: "看着自己成长真的好爽！",
-        cover: emptyImage("视频代表笔记暂未展示", "视频展示待确认"),
+        cover: emptyImage("看着自己成长真的好爽视频笔记", "点击打开并播放视频"),
+        video: {
+          src: "/portfolio/xiaohongshu/she-growth.mp4",
+          mimeType: "video/mp4",
+        },
         likes: "4863",
         favorites: "6086",
         comments: "4",

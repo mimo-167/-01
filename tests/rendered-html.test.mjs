@@ -113,7 +113,7 @@ test("opens every selected Xiaohongshu note inside the portfolio", async () => {
     ["big-after-gaokao", "高考完就要做这些", "2.9万", "成为小时候想象中"],
     ["big-anti-anxiety", "反焦虑心法", "1.9万", "允许事情悬而未决"],
     ["big-interview-mindset", "面试心态", "8735", "自我探索的工作坊"],
-    ["she-growth", "看着自己成长", "4863", "视频文件暂不上传"],
+    ["she-growth", "看着自己成长", "4863", "she-growth.mp4"],
     ["chestnut-independent-girlfriend", "女朋友突然开始独立", "9770", "chestnut-independent-12.jpeg"],
     ["chestnut-game-return", "退游后", "2678", "chestnut-game-return-v2-07.png"],
     ["quiet-confession-letters", "告白信合集", "1.1万", "quiet-confession-06.webp"],
@@ -151,6 +151,18 @@ test("opens every selected Xiaohongshu note inside the portfolio", async () => {
   }
   const galleryNote = await render("/xiaohongshu/snack-xiha");
   assert.match(await galleryNote.text(), /object-fit:contain/);
+
+  const videoNote = await render("/xiaohongshu/she-growth");
+  const videoNoteHtml = await videoNote.text();
+  assert.match(videoNoteHtml, /<video[^>]*class="xhs-detail-video"[^>]*controls/);
+  assert.match(videoNoteHtml, /<source src="\/portfolio\/xiaohongshu\/she-growth\.mp4" type="video\/mp4"/);
+  assert.doesNotMatch(videoNoteHtml, /视频文件暂不上传/);
+});
+
+test("SHE进化论代表笔记视频是有效的 MP4 文件", async () => {
+  const videoFile = await readFile(new URL("../public/portfolio/xiaohongshu/she-growth.mp4", import.meta.url));
+  assert.ok(videoFile.length > 500_000);
+  assert.equal(videoFile.subarray(4, 8).toString("ascii"), "ftyp");
 });
 
 test("一颗栗子酥第二篇笔记的七张图可解码且不是灰屏", async () => {
@@ -245,6 +257,7 @@ test("ships editable content and downloadable artifacts", async () => {
     access(new URL("../public/portfolio/products/tarot-future-lover.png", import.meta.url)),
     access(new URL("../public/portfolio/xiaohongshu/reading-profile.jpg", import.meta.url)),
     access(new URL("../public/portfolio/xiaohongshu/snack-profile.jpg", import.meta.url)),
+    access(new URL("../public/portfolio/xiaohongshu/she-growth.mp4", import.meta.url)),
   ]);
   const resumeFile = await stat(new URL("../public/resume-zhu-mo.pdf", import.meta.url));
   assert.ok(resumeFile.size > 200_000);

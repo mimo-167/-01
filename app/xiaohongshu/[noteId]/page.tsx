@@ -86,15 +86,25 @@ export default async function XiaohongshuNotePage({
 
       <article className="xhs-detail-paper">
         <span className="paper-tape" aria-hidden="true" />
-        <section className="xhs-cover-section" aria-labelledby="xhs-cover-heading">
-          <p className="eyebrow" id="xhs-cover-heading">COVER / 01</p>
-          <div
-            className={`xhs-detail-image ${heroImage.src ? "" : "is-placeholder"}`}
-            style={heroImage.aspectRatio ? { aspectRatio: heroImage.aspectRatio } : undefined}
-          >
-            <NoteImage image={heroImage} priority />
-          </div>
-        </section>
+        {note.video ? (
+          <section className="xhs-video-section" aria-labelledby="xhs-video-heading">
+            <p className="eyebrow" id="xhs-video-heading">VIDEO / 01</p>
+            <video className="xhs-detail-video" controls playsInline preload="metadata" aria-label={`${note.title}视频`}>
+              <source src={note.video.src} type={note.video.mimeType} />
+              你的浏览器暂不支持视频播放，请更新浏览器后重试。
+            </video>
+          </section>
+        ) : (
+          <section className="xhs-cover-section" aria-labelledby="xhs-cover-heading">
+            <p className="eyebrow" id="xhs-cover-heading">COVER / 01</p>
+            <div
+              className={`xhs-detail-image ${heroImage.src ? "" : "is-placeholder"}`}
+              style={heroImage.aspectRatio ? { aspectRatio: heroImage.aspectRatio } : undefined}
+            >
+              <NoteImage image={heroImage} priority />
+            </div>
+          </section>
+        )}
 
         {detail.notice ? <aside className="xhs-note-notice">{detail.notice}</aside> : null}
 

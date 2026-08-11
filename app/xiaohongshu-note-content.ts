@@ -151,7 +151,6 @@ export const socialNoteDetails: Record<string, SocialNoteDetail> = {
   },
   "she-growth": {
     images: [],
-    notice: "该内容为短视频笔记。按当前要求，视频文件暂不上传，后续确认后可以在这里直接嵌入播放。",
     body: `看着自己成长真的好爽！
 
 #女性成长 #读书 #自我成长 #推荐书单`,

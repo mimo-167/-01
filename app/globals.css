@@ -529,6 +529,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 a.social-note-card:hover { transform: translateY(-4px) rotate(-.5deg); }
 .note-cover { aspect-ratio: 4 / 5; border-bottom: 1.5px solid var(--line); }
 .social-note-card:nth-child(3n+2) .note-cover { aspect-ratio: 1 / 1; }
+.note-video-preview { position: relative; overflow: hidden; background: #17191d; }
+.note-video-preview video { width: 100%; height: 100%; display: block; object-fit: cover; }
+.note-video-badge { position: absolute; left: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px; color: #fff; border: 1px solid rgba(255,255,255,.65); border-radius: 999px; background: rgba(19,20,23,.76); box-shadow: 0 3px 10px rgba(0,0,0,.18); font-size: 13px; letter-spacing: .05em; backdrop-filter: blur(5px); }
+.note-video-badge b { font-size: 11px; }
 .note-copy { padding: 14px 9px 3px; }
 .note-copy h4 { min-height: 2.7em; margin: 0 0 13px; font-size: 20px; font-weight: 400; line-height: 1.35; }
 .note-metrics { display: flex; align-items: center; flex-wrap: wrap; gap: 9px 17px; color: var(--muted); font-size: 15px; }
@@ -582,6 +586,8 @@ a.social-note-card:hover { transform: translateY(-4px) rotate(-.5deg); }
 .xhs-detail-paper > section + section { margin-top: clamp(52px, 8vw, 88px); }
 .xhs-detail-paper .eyebrow { margin-bottom: 18px; }
 .xhs-cover-section { max-width: 720px; margin: 0 auto; }
+.xhs-video-section { max-width: 520px; margin: 0 auto; }
+.xhs-detail-video { width: 100%; max-height: 82svh; display: block; aspect-ratio: 9 / 16; border: 10px solid #fff; background: #101115; box-shadow: 3px 9px 21px rgba(28,30,27,.15); object-fit: contain; }
 .xhs-detail-image { position: relative; width: 100%; aspect-ratio: 3 / 4; overflow: hidden; border: 10px solid #fff; background: var(--paper-deep); box-shadow: 3px 9px 21px rgba(28,30,27,.15); }
 .xhs-detail-image > img { object-fit: contain; }
 .xhs-detail-image.is-placeholder { aspect-ratio: 4 / 3; }
@@ -767,6 +773,7 @@ a.social-note-card:hover { transform: translateY(-4px) rotate(-.5deg); }
   .xhs-detail-meta small, .xhs-detail-meta strong { align-self: auto; }
   .xhs-detail-paper { padding: 40px 16px 46px; box-shadow: 5px 8px 0 var(--sage-pale); }
   .xhs-detail-image { border-width: 6px; }
+  .xhs-detail-video { max-height: 76svh; border-width: 6px; }
   .xhs-note-body { font-size: 18px; line-height: 1.88; }
   .xhs-detail-gallery { gap: 34px; }
   .xhs-detail-footer { align-items: stretch; flex-direction: column; }

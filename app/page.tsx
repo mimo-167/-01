@@ -87,7 +87,16 @@ function SocialNoteCard({ note, index }: { note: SocialNote; index: number }) {
       href={`/xiaohongshu/${note.id}`}
       aria-label={`查看《${note.title}》完整内容`}
     >
-      <MediaFrame image={note.cover} className="note-cover" sizes="(max-width: 640px) 50vw, 260px" />
+      {note.video ? (
+        <div className="note-cover note-video-preview">
+          <video muted playsInline preload="auto" aria-label={`${note.title}视频预览`}>
+            <source src={note.video.src} type={note.video.mimeType} />
+          </video>
+          <span className="note-video-badge"><b aria-hidden="true">▶</b> 点击打开视频</span>
+        </div>
+      ) : (
+        <MediaFrame image={note.cover} className="note-cover" sizes="(max-width: 640px) 50vw, 260px" />
+      )}
       <div className="note-copy">
         <h4>{note.title}</h4>
         <div className="note-metrics" aria-label="笔记互动数据">
