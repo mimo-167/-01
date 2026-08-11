@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createCanvas, loadImage } from "@napi-rs/canvas";
 import { access, readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
@@ -93,7 +94,7 @@ test("opens every selected Xiaohongshu note inside the portfolio", async () => {
     ["big-interview-mindset", "面试心态", "8735", "自我探索的工作坊"],
     ["she-growth", "看着自己成长", "4863", "视频文件暂不上传"],
     ["chestnut-independent-girlfriend", "女朋友突然开始独立", "9770", "chestnut-independent-12.jpeg"],
-    ["chestnut-game-return", "退游后", "2678", "chestnut-game-return-07.png"],
+    ["chestnut-game-return", "退游后", "2678", "chestnut-game-return-v2-07.png"],
     ["quiet-confession-letters", "告白信合集", "1.1万", "quiet-confession-06.webp"],
     ["reading-bankrupt-heir", "高富帅破产后", "2741", "我的帝王生涯"],
     ["reading-white-paper", "一张白纸价值10万", "5834", "看不见的收藏"],
@@ -129,6 +130,28 @@ test("opens every selected Xiaohongshu note inside the portfolio", async () => {
   }
   const galleryNote = await render("/xiaohongshu/snack-xiha");
   assert.match(await galleryNote.text(), /object-fit:contain/);
+});
+
+test("一颗栗子酥第二篇笔记的七张图可解码且不是灰屏", async () => {
+  for (let index = 1; index <= 7; index += 1) {
+    const suffix = String(index).padStart(2, "0");
+    const imageFile = new URL(`../public/portfolio/xiaohongshu/chestnut-game-return-v2-${suffix}.png`, import.meta.url);
+    const image = await loadImage(await readFile(imageFile));
+    assert.equal(image.width, 1080);
+    assert.equal(image.height, 1440);
+
+    const canvas = createCanvas(27, 36);
+    const context = canvas.getContext("2d");
+    context.drawImage(image, 0, 0, canvas.width, canvas.height);
+    const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
+    const colors = new Map();
+    for (let offset = 0; offset < pixels.length; offset += 4) {
+      const color = `${pixels[offset]},${pixels[offset + 1]},${pixels[offset + 2]}`;
+      colors.set(color, (colors.get(color) ?? 0) + 1);
+    }
+    const dominantPixels = Math.max(...colors.values());
+    assert.ok(dominantPixels / (canvas.width * canvas.height) < 0.8, `${suffix} 不应该是大面积单色灰屏`);
+  }
 });
 
 test("renders the supplied women-oriented writing as readable text", async () => {
