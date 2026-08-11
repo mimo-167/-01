@@ -71,8 +71,12 @@ function SectionHeading({ index, english, title }: { index: string; english: str
 }
 
 function SocialNoteCard({ note, index }: { note: SocialNote; index: number }) {
-  const card = (
-    <>
+  return (
+    <Link
+      className={`social-note-card rotate-${index % 3}`}
+      href={`/xiaohongshu/${note.id}`}
+      aria-label={`查看《${note.title}》完整内容`}
+    >
       <MediaFrame image={note.cover} className="note-cover" sizes="(max-width: 640px) 50vw, 260px" />
       <div className="note-copy">
         <h4>{note.title}</h4>
@@ -82,15 +86,7 @@ function SocialNoteCard({ note, index }: { note: SocialNote; index: number }) {
           <span title="评论"><b aria-hidden="true">◌</b>{note.comments}</span>
         </div>
       </div>
-    </>
-  );
-
-  return note.url ? (
-    <a className={`social-note-card rotate-${index % 3}`} href={note.url} target="_blank" rel="noreferrer">
-      {card}
-    </a>
-  ) : (
-    <article className={`social-note-card rotate-${index % 3}`}>{card}</article>
+    </Link>
   );
 }
 

@@ -27,6 +27,8 @@ test("server-renders the finished portfolio", async () => {
   assert.match(html, /电子榨菜品鉴大王/);
   assert.match(html, /宝宝 其实你不喜欢边焦虑边玩手机的 对吗/);
   assert.match(html, /图片稍后补充/);
+  assert.equal((html.match(/href="\/xiaohongshu\//g) ?? []).length, 12);
+  assert.doesNotMatch(html, /href="https:\/\/www\.xiaohongshu\.com\/explore\//);
   assert.match(html, /src="\/portfolio\/xiaohongshu\/big-profile\.png"/);
   assert.match(html, /src="\/portfolio\/xiaohongshu\/big-performance\.jpg"/);
   assert.doesNotMatch(html, /\/_vinext\/image\?/);
@@ -40,6 +42,40 @@ test("server-renders the finished portfolio", async () => {
   assert.match(html, /简历与联系方式/);
   assert.doesNotMatch(html, /Case Study|Coming Soon|游戏观察/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|Your site is taking shape/);
+});
+
+test("opens every selected Xiaohongshu note inside the portfolio", async () => {
+  const notes = [
+    ["big-phone-anxiety", "边焦虑边玩手机", "10万+", "这不是你的错"],
+    ["big-after-gaokao", "高考完就要做这些", "2.9万", "成为小时候想象中"],
+    ["big-anti-anxiety", "反焦虑心法", "1.9万", "允许事情悬而未决"],
+    ["big-interview-mindset", "面试心态", "8735", "自我探索的工作坊"],
+    ["she-growth", "看着自己成长", "4863", "视频文件暂不上传"],
+    ["chestnut-independent-girlfriend", "女朋友突然开始独立", "9770", "chestnut-independent-12.jpeg"],
+    ["chestnut-game-return", "退游后", "2678", "chestnut-game-return-07.jpeg"],
+    ["quiet-confession-letters", "告白信合集", "1.1万", "quiet-confession-06.webp"],
+    ["reading-bankrupt-heir", "高富帅破产后", "2741", "我的帝王生涯"],
+    ["reading-white-paper", "一张白纸价值10万", "5834", "看不见的收藏"],
+    ["snack-xiha", "嘻哈硬刚酒桌骚扰", "1.2万", "snack-xiha-13.png"],
+    ["snack-shuqi", "那些创伤一直在", "1.5万", "snack-shuqi-10.png"],
+  ];
+
+  for (const [noteId, title, likes, completeContentMarker] of notes) {
+    const response = await render(`/xiaohongshu/${noteId}`);
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    assert.match(html, new RegExp(title));
+    assert.match(html, new RegExp(likes.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.match(html, new RegExp(completeContentMarker.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.match(html, /FULL CAPTION/);
+    assert.match(html, /点赞/);
+    assert.match(html, /收藏/);
+    assert.match(html, /评论/);
+    assert.match(html, /返回小红书作品/);
+  }
+
+  const linkedNote = await render("/xiaohongshu/big-phone-anxiety");
+  assert.match(await linkedNote.text(), /前往小红书查看原笔记/);
 });
 
 test("renders the supplied women-oriented writing as readable text", async () => {
