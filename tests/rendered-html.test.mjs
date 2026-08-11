@@ -19,10 +19,18 @@ test("server-renders the finished portfolio", async () => {
   assert.match(html, /Momo/);
   assert.match(html, /1\.3W\+/);
   assert.match(html, /小红书作品/);
+  assert.match(html, /比格大王在假装进步/);
+  assert.match(html, /SHE进化论/);
+  assert.match(html, /一颗栗子酥/);
+  assert.match(html, /她也不爱说话/);
+  assert.match(html, /正在书入中/);
+  assert.match(html, /电子榨菜品鉴大王/);
+  assert.match(html, /宝宝 其实你不喜欢边焦虑边玩手机的 对吗/);
+  assert.match(html, /图片稍后补充/);
   assert.match(html, /女性向文字作品/);
   assert.match(html, /NG：我是第一个被你这样对待的吗/);
   assert.match(html, /这种小三上位的才会最害怕小三啊/);
-  assert.match(html, /为了拉拢你，天堂和地狱分别派出了天使和魅魔/);
+  assert.match(html, /GB为了拉拢你，天堂和地狱分别派出了天使和魅魔/);
   assert.match(html, /温柔到几乎无底线的小叔叔/);
   assert.doesNotMatch(html, /作品封面 \/ 代表截图|聊天记录 \/ 代表截图/);
   assert.match(html, /AI 塔罗在线占卜网站/);
@@ -35,7 +43,7 @@ test("renders the supplied women-oriented writing as readable text", async () =>
   const works = [
     ["/women-writing/ng-am-i-the-first", "NG：我是第一个被你这样对待的吗", "哪怕再疼痛再难耐"],
     ["/women-writing/afraid-of-the-other-woman", "这种小三上位的才会最害怕小三啊", "这可是他勾引你的资本"],
-    ["/women-writing/angel-and-demon", "为了拉拢你，天堂和地狱分别派出了天使和魅魔", "你快噶了"],
+    ["/women-writing/angel-and-demon", "GB为了拉拢你，天堂和地狱分别派出了天使和魅魔", "你快噶了"],
     ["/women-writing/gentle-uncle-1", "温柔到几乎无底线的小叔叔", "门外下起了雨"],
   ];
 

@@ -557,7 +557,9 @@ a.social-note-card:hover { transform: translateY(-4px) rotate(-.5deg); }
 .writing-manuscript { position: relative; max-width: 880px; margin: 0 auto; padding: clamp(43px, 7vw, 82px); background: #f8f4eb; clip-path: polygon(1% 1%, 99% 0, 100% 98%, 93% 99%, 85% 98%, 75% 100%, 65% 98%, 54% 99%, 43% 98%, 31% 100%, 20% 98%, 10% 99%, 0 98%); box-shadow: 3px 10px 24px rgba(28,30,27,.1); }
 .writing-manuscript::before { content: ""; position: absolute; inset: 25px 22px 30px; border: 1px solid rgba(28,30,27,.1); pointer-events: none; }
 .manuscript-tape { position: absolute; z-index: 2; left: 12%; top: -13px; width: 125px; height: 31px; background: var(--tape); transform: rotate(-4deg); }
-.writing-body { position: relative; z-index: 1; color: var(--body); font-size: 20px; line-height: 2; letter-spacing: .015em; white-space: pre-wrap; overflow-wrap: anywhere; }
+.writing-body { position: relative; z-index: 1; color: var(--body); font-size: 20px; line-height: 1.95; letter-spacing: .015em; overflow-wrap: anywhere; }
+.writing-body p { margin: 0 0 1.15em; white-space: pre-wrap; }
+.writing-body p:last-child { margin-bottom: 0; }
 .reader-footer { max-width: 880px; display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; margin: 55px auto 0; }
 
 .product-paper { position: relative; padding: clamp(28px, 5vw, 62px); border: 2.2px solid var(--ink); border-radius: 3% 2% 4% 2% / 2% 4% 2% 3%; background: rgba(255,255,255,.28); box-shadow: -9px 11px 0 var(--sage-soft); }

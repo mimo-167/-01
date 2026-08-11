@@ -13,7 +13,11 @@ export function WritingReader({ work }: { work: WomenWritingWork }) {
       </header>
       <article className="writing-manuscript">
         <div className="manuscript-tape" aria-hidden="true" />
-        <div className="writing-body">{work.content}</div>
+        <div className="writing-body">
+          {work.content.split(/\n{2,}/).map((paragraph, index) => (
+            <p key={`${work.slug}-${index}`}>{paragraph}</p>
+          ))}
+        </div>
       </article>
       <nav className="reader-footer" aria-label="文字作品阅读导航">
         <Link className="button button-paper" href="/#writing-works">返回作品墙</Link>

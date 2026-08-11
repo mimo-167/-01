@@ -14,10 +14,14 @@ export type WomenWritingWork = {
 function prepareContent(raw: string, title: string, date?: string) {
   const lines = raw.replace(/\r\n/g, "\n").trim().split("\n");
 
-  if (lines[0]?.trim() === title) lines.shift();
+  if (lines[0]?.trim().replace(/^【GB】/, "GB") === title) lines.shift();
   if (date && lines[0]?.trim() === date) lines.shift();
 
-  return lines.join("\n").trim();
+  return lines
+    .map((line) => line.replace(/^[\t \u3000]+/, "").trimEnd())
+    .join("\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
 }
 
 export const womenWritingWorks: WomenWritingWork[] = [
@@ -35,10 +39,10 @@ export const womenWritingWorks: WomenWritingWork[] = [
   },
   {
     slug: "angel-and-demon",
-    title: "【GB】为了拉拢你，天堂和地狱分别派出了天使和魅魔",
+    title: "GB为了拉拢你，天堂和地狱分别派出了天使和魅魔",
     type: "原创",
     date: "2024.6 写",
-    content: prepareContent(angelAndDemonRaw, "【GB】为了拉拢你，天堂和地狱分别派出了天使和魅魔", "2024.6写"),
+    content: prepareContent(angelAndDemonRaw, "GB为了拉拢你，天堂和地狱分别派出了天使和魅魔", "2024.6写"),
   },
   {
     slug: "gentle-uncle-1",
