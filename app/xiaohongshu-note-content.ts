@@ -23,8 +23,12 @@ const imageSeries = (
 export const socialNoteDetails: Record<string, SocialNoteDetail> = {
   "big-phone-anxiety": {
     publishedAt: "2025-04-29",
-    images: [],
-    notice: "该账号的高赞笔记图片尚未上传，目前先完整展示文字正文。",
+    images: [{
+      src: "/portfolio/xiaohongshu/big-note-crying.jpg",
+      alt: "哭泣的小比格插画",
+      placeholder: "笔记配图",
+      aspectRatio: "1132 / 1080",
+    }],
     body: `宝宝，我知道其实你现在一点也不想玩手机的，对吗？
 
 现在的你每天一睡醒，第一件事就是玩手机，看消息、刷短视频、再刷点娱乐八卦。
@@ -56,8 +60,12 @@ export const socialNoteDetails: Record<string, SocialNoteDetail> = {
   },
   "big-after-gaokao": {
     publishedAt: "2025-06-17",
-    images: [],
-    notice: "该账号的高赞笔记图片尚未上传，目前先完整展示文字正文。",
+    images: [{
+      src: "/portfolio/xiaohongshu/big-note-crying.jpg",
+      alt: "哭泣的小比格插画",
+      placeholder: "笔记配图",
+      aspectRatio: "1132 / 1080",
+    }],
     body: `宝宝，你高中的时候就是个对未来充满期待的小女孩。
 
 你感兴趣的东西特别多，什么事都很想尝试。
@@ -85,8 +93,12 @@ export const socialNoteDetails: Record<string, SocialNoteDetail> = {
   },
   "big-anti-anxiety": {
     publishedAt: "2025-05-15",
-    images: [],
-    notice: "该账号的高赞笔记图片尚未上传，目前先完整展示文字正文。",
+    images: [{
+      src: "/portfolio/xiaohongshu/big-note-mindset.jpg",
+      alt: "一个很牛的面试心法小比格插画",
+      placeholder: "笔记配图",
+      aspectRatio: "1084 / 1080",
+    }],
     body: `最近我有了一点流量焦虑，每发出去一篇笔记就会忍不住反复刷新看后台的数据。
 
 回想了一下我大部分焦虑时刻都是这种，急于想要看到事情的结果，讨厌不确定性。
@@ -111,8 +123,12 @@ export const socialNoteDetails: Record<string, SocialNoteDetail> = {
   },
   "big-interview-mindset": {
     publishedAt: "2025-04-25",
-    images: [],
-    notice: "该账号的高赞笔记图片尚未上传，目前先完整展示文字正文。",
+    images: [{
+      src: "/portfolio/xiaohongshu/big-note-mindset.jpg",
+      alt: "一个很牛的面试心法小比格插画",
+      placeholder: "笔记配图",
+      aspectRatio: "1084 / 1080",
+    }],
     body: `把面试当成自我探索的工作坊！我参加这一个面试，不是因为我需要得到这一次工作的机会；而是因为这里有一个免费参加，可以促进自我探索，还能积累面试经验的活动！
 
 面试前先完完整整梳理一遍自己人生的过往经历，不管绩点、社团活动、自媒体、校外活动、多少会一点的技能……不管大的小的全部先写上。岗位JD筛选出与可以跟它扯上关系的能力，想想自己的哪些经历、哪些具体事件可以很好地佐证这种能力。一切准备就绪之后，就不需要再担忧，不需要再做太多的准备啦！面试题再怎么准备也总会意料之外，但是这种免费的工作坊一抓一大把！

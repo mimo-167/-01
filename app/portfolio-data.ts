@@ -76,14 +76,6 @@ export const socialAccounts: SocialAccount[] = [
         layout: "portrait",
       },
       {
-        src: "/portfolio/xiaohongshu/big-data-creator-center.jpg",
-        alt: "比格大王在假装进步创作者中心近七日数据截图",
-        placeholder: "近七日数据",
-        aspectRatio: "1080 / 2287",
-        caption: "创作者中心与近 7 日表现",
-        layout: "portrait",
-      },
-      {
         src: "/portfolio/xiaohongshu/big-data-audience.jpg",
         alt: "比格大王在假装进步粉丝性别年龄城市兴趣分布截图",
         placeholder: "粉丝画像数据",
@@ -100,14 +92,6 @@ export const socialAccounts: SocialAccount[] = [
         layout: "wide",
       },
       {
-        src: "/portfolio/xiaohongshu/big-data-overview.jpg",
-        alt: "比格大王在假装进步蒲公英平台数据概览截图",
-        placeholder: "平台数据概览",
-        aspectRatio: "1280 / 898",
-        caption: "商业平台数据概览",
-        layout: "wide",
-      },
-      {
         src: "/portfolio/xiaohongshu/big-data-core-trends.jpg",
         alt: "比格大王在假装进步核心指标与曝光趋势截图",
         placeholder: "核心指标趋势",
@@ -115,20 +99,17 @@ export const socialAccounts: SocialAccount[] = [
         caption: "核心指标与曝光趋势",
         layout: "wide",
       },
-      {
-        src: "/portfolio/xiaohongshu/big-data-traffic-notes.jpg",
-        alt: "比格大王在假装进步流量来源与笔记表现截图",
-        placeholder: "流量与笔记数据",
-        aspectRatio: "1280 / 832",
-        caption: "流量来源与笔记表现",
-        layout: "wide",
-      },
     ],
     notes: [
       {
         id: "big-phone-anxiety",
         title: "宝宝 其实你不喜欢边焦虑边玩手机的 对吗",
-        cover: emptyImage("笔记图片尚未上传", "图片稍后补充"),
+        cover: {
+          src: "/portfolio/xiaohongshu/big-note-crying.jpg",
+          alt: "哭泣的小比格插画",
+          placeholder: "笔记配图",
+          aspectRatio: "1132 / 1080",
+        },
         likes: "10万+",
         favorites: "1.9万",
         comments: "996",
@@ -137,7 +118,12 @@ export const socialAccounts: SocialAccount[] = [
       {
         id: "big-after-gaokao",
         title: "宝宝 你不是说高考完就要做这些的吗？",
-        cover: emptyImage("笔记图片尚未上传", "图片稍后补充"),
+        cover: {
+          src: "/portfolio/xiaohongshu/big-note-crying.jpg",
+          alt: "哭泣的小比格插画",
+          placeholder: "笔记配图",
+          aspectRatio: "1132 / 1080",
+        },
         likes: "2.9万",
         favorites: "5776",
         comments: "489",
@@ -146,7 +132,12 @@ export const socialAccounts: SocialAccount[] = [
       {
         id: "big-anti-anxiety",
         title: "一个很牛的反焦虑心法",
-        cover: emptyImage("笔记图片尚未上传", "图片稍后补充"),
+        cover: {
+          src: "/portfolio/xiaohongshu/big-note-mindset.jpg",
+          alt: "一个很牛的面试心法小比格插画",
+          placeholder: "笔记配图",
+          aspectRatio: "1084 / 1080",
+        },
         likes: "1.9万",
         favorites: "5929",
         comments: "199",
@@ -155,7 +146,12 @@ export const socialAccounts: SocialAccount[] = [
       {
         id: "big-interview-mindset",
         title: "一个巨牛的面试心态",
-        cover: emptyImage("笔记图片尚未上传", "图片稍后补充"),
+        cover: {
+          src: "/portfolio/xiaohongshu/big-note-mindset.jpg",
+          alt: "一个很牛的面试心法小比格插画",
+          placeholder: "笔记配图",
+          aspectRatio: "1084 / 1080",
+        },
         likes: "8735",
         favorites: "5386",
         comments: "134",

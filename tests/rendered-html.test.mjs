@@ -31,7 +31,7 @@ test("server-renders the finished portfolio", async () => {
   assert.doesNotMatch(html, /href="https:\/\/www\.xiaohongshu\.com\/explore\//);
   assert.match(html, /src="\/portfolio\/xiaohongshu\/big-profile\.png"/);
   assert.match(html, /src="\/portfolio\/xiaohongshu\/big-performance\.jpg"/);
-  assert.match(html, /账号阶段数据 · (?:<!-- -->)?7(?:<!-- -->)? 张/);
+  assert.match(html, /过往数据/);
   for (const accountInfo of [
     "2025年4月—2026年1月",
     "2025年11月—2026年1月",
@@ -47,14 +47,15 @@ test("server-renders the finished portfolio", async () => {
   }
   for (const imageName of [
     "big-data-account-overview.jpg",
-    "big-data-creator-center.jpg",
     "big-data-audience.jpg",
-    "big-data-overview.jpg",
     "big-data-core-trends.jpg",
-    "big-data-traffic-notes.jpg",
   ]) {
     assert.match(html, new RegExp(`/portfolio/xiaohongshu/${imageName}`));
   }
+  assert.equal((html.match(/class="performance-card is-/g) ?? []).length, 4);
+  assert.doesNotMatch(html, /big-data-creator-center|big-data-overview|big-data-traffic-notes/);
+  assert.ok((html.match(/big-note-crying\.jpg/g) ?? []).length >= 2);
+  assert.ok((html.match(/big-note-mindset\.jpg/g) ?? []).length >= 2);
   assert.match(html, /aspect-ratio:1080 \/ 2414/);
   assert.match(html, /aspect-ratio:1638 \/ 476/);
   assert.match(html, /object-fit:contain/);
@@ -104,6 +105,15 @@ test("opens every selected Xiaohongshu note inside the portfolio", async () => {
   const linkedNote = await render("/xiaohongshu/big-phone-anxiety");
   const linkedNoteHtml = await linkedNote.text();
   assert.match(linkedNoteHtml, /前往小红书查看原笔记/);
+  for (const [noteId, imageName] of [
+    ["big-phone-anxiety", "big-note-crying.jpg"],
+    ["big-after-gaokao", "big-note-crying.jpg"],
+    ["big-anti-anxiety", "big-note-mindset.jpg"],
+    ["big-interview-mindset", "big-note-mindset.jpg"],
+  ]) {
+    const notePage = await render(`/xiaohongshu/${noteId}`);
+    assert.match(await notePage.text(), new RegExp(imageName));
+  }
   const galleryNote = await render("/xiaohongshu/snack-xiha");
   assert.match(await galleryNote.text(), /object-fit:contain/);
 });

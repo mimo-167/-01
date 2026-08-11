@@ -154,7 +154,7 @@ export default function Home() {
 
               {account.performance?.length ? (
                 <section className="performance-paper" aria-labelledby={`${account.id}-performance`}>
-                  <p className="hand-note" id={`${account.id}-performance`}>账号阶段数据 · {account.performance.length} 张</p>
+                  <h4 className="performance-title" id={`${account.id}-performance`}>过往数据</h4>
                   <div className="performance-gallery">
                     {account.performance.map((image, imageIndex) => (
                       <figure className={`performance-card is-${image.layout}`} key={image.src}>
