@@ -152,10 +152,20 @@ export default function Home() {
                 </div>
               </div>
 
-              {account.performance ? (
+              {account.performance?.length ? (
                 <section className="performance-paper" aria-labelledby={`${account.id}-performance`}>
-                  <p className="hand-note" id={`${account.id}-performance`}>账号阶段数据</p>
-                  <MediaFrame image={account.performance} className="performance-shot" sizes="(max-width: 760px) 100vw, 900px" />
+                  <p className="hand-note" id={`${account.id}-performance`}>账号阶段数据 · {account.performance.length} 张</p>
+                  <div className="performance-gallery">
+                    {account.performance.map((image, imageIndex) => (
+                      <figure className={`performance-card is-${image.layout}`} key={image.src}>
+                        <MediaFrame image={image} className="performance-shot" sizes="(max-width: 760px) 100vw, 900px" />
+                        <figcaption>
+                          <span>{String(imageIndex + 1).padStart(2, "0")}</span>
+                          {image.caption}
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
                 </section>
               ) : null}
 

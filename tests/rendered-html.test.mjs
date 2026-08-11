@@ -31,6 +31,17 @@ test("server-renders the finished portfolio", async () => {
   assert.doesNotMatch(html, /href="https:\/\/www\.xiaohongshu\.com\/explore\//);
   assert.match(html, /src="\/portfolio\/xiaohongshu\/big-profile\.png"/);
   assert.match(html, /src="\/portfolio\/xiaohongshu\/big-performance\.jpg"/);
+  assert.match(html, /账号阶段数据 · (?:<!-- -->)?7(?:<!-- -->)? 张/);
+  for (const imageName of [
+    "big-data-account-overview.jpg",
+    "big-data-creator-center.jpg",
+    "big-data-audience.jpg",
+    "big-data-overview.jpg",
+    "big-data-core-trends.jpg",
+    "big-data-traffic-notes.jpg",
+  ]) {
+    assert.match(html, new RegExp(`/portfolio/xiaohongshu/${imageName}`));
+  }
   assert.match(html, /aspect-ratio:1080 \/ 2414/);
   assert.match(html, /aspect-ratio:1638 \/ 476/);
   assert.match(html, /object-fit:contain/);

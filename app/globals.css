@@ -511,7 +511,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .account-link { width: fit-content; }
 .performance-paper { margin: 58px 0 66px; padding: clamp(23px, 4vw, 42px); background: #f4eee2; clip-path: polygon(1% 2%, 99% 0, 100% 96%, 91% 98%, 80% 96%, 68% 99%, 56% 97%, 43% 100%, 30% 97%, 17% 99%, 0 97%); }
 .performance-paper .hand-note { margin: 0 0 17px; font-size: 22px; transform: rotate(-1deg); }
+.performance-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(25px, 4vw, 42px) clamp(18px, 3vw, 30px); align-items: start; }
+.performance-card { min-width: 0; margin: 0; }
+.performance-card.is-wide { grid-column: 1 / -1; }
 .performance-shot { aspect-ratio: 16 / 6.5; border: 8px solid #fff; box-shadow: 2px 6px 12px rgba(28,30,27,.12); }
+.performance-card figcaption { display: flex; align-items: baseline; gap: 10px; margin-top: 12px; color: var(--body); font-size: 16px; line-height: 1.45; }
+.performance-card figcaption span { color: var(--sage-dark); font-family: var(--brush); font-size: 19px; letter-spacing: .08em; }
 .notes-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 27px; border-bottom: 2px solid var(--ink); }
 .notes-heading h3 { margin: 0; font-size: 34px; font-weight: 400; }
 .note-waterfall { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 30px 34px; align-items: start; }
@@ -720,6 +725,8 @@ a.social-note-card:hover { transform: translateY(-4px) rotate(-.5deg); }
   .account-facts { grid-template-columns: 1fr; }
   .account-facts div:nth-child(even) { padding-left: 0; border-left: 0; }
   .performance-paper { margin: 43px 0 52px; padding: 19px 13px 27px; }
+  .performance-gallery { grid-template-columns: 1fr; gap: 30px; }
+  .performance-card.is-wide { grid-column: auto; }
   .performance-shot { aspect-ratio: 4 / 3; border-width: 5px; }
   .notes-heading { align-items: flex-start; flex-direction: column; gap: 0; }
   .note-waterfall { gap: 20px 13px; }

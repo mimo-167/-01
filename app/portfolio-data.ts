@@ -5,6 +5,11 @@ export type PortfolioImage = {
   aspectRatio?: string;
 };
 
+export type PortfolioEvidence = PortfolioImage & {
+  caption: string;
+  layout: "portrait" | "wide";
+};
+
 export type SocialNote = {
   id: string;
   title: string;
@@ -24,7 +29,7 @@ export type SocialAccount = {
   topPost: string;
   url: string;
   profile: PortfolioImage;
-  performance?: PortfolioImage;
+  performance?: PortfolioEvidence[];
   notes: SocialNote[];
 };
 
@@ -61,12 +66,64 @@ export const socialAccounts: SocialAccount[] = [
       placeholder: "账号首页截图",
       aspectRatio: "1080 / 2414",
     },
-    performance: {
-      src: "/portfolio/xiaohongshu/big-performance.jpg",
-      alt: "比格大王在假装进步账号粉丝分析核心指标截图",
-      placeholder: "账号阶段数据原始截图",
-      aspectRatio: "1638 / 476",
-    },
+    performance: [
+      {
+        src: "/portfolio/xiaohongshu/big-data-account-overview.jpg",
+        alt: "比格大王在假装进步数据中心账号概览截图",
+        placeholder: "账号概览数据",
+        aspectRatio: "1080 / 2278",
+        caption: "账号概览与基础数据",
+        layout: "portrait",
+      },
+      {
+        src: "/portfolio/xiaohongshu/big-data-creator-center.jpg",
+        alt: "比格大王在假装进步创作者中心近七日数据截图",
+        placeholder: "近七日数据",
+        aspectRatio: "1080 / 2287",
+        caption: "创作者中心与近 7 日表现",
+        layout: "portrait",
+      },
+      {
+        src: "/portfolio/xiaohongshu/big-data-audience.jpg",
+        alt: "比格大王在假装进步粉丝性别年龄城市兴趣分布截图",
+        placeholder: "粉丝画像数据",
+        aspectRatio: "1080 / 2256",
+        caption: "粉丝画像与兴趣分布",
+        layout: "portrait",
+      },
+      {
+        src: "/portfolio/xiaohongshu/big-performance.jpg",
+        alt: "比格大王在假装进步账号粉丝分析核心指标截图",
+        placeholder: "粉丝分析核心指标",
+        aspectRatio: "1638 / 476",
+        caption: "粉丝增长与活跃粉丝占比",
+        layout: "wide",
+      },
+      {
+        src: "/portfolio/xiaohongshu/big-data-overview.jpg",
+        alt: "比格大王在假装进步蒲公英平台数据概览截图",
+        placeholder: "平台数据概览",
+        aspectRatio: "1280 / 898",
+        caption: "商业平台数据概览",
+        layout: "wide",
+      },
+      {
+        src: "/portfolio/xiaohongshu/big-data-core-trends.jpg",
+        alt: "比格大王在假装进步核心指标与曝光趋势截图",
+        placeholder: "核心指标趋势",
+        aspectRatio: "1280 / 858",
+        caption: "核心指标与曝光趋势",
+        layout: "wide",
+      },
+      {
+        src: "/portfolio/xiaohongshu/big-data-traffic-notes.jpg",
+        alt: "比格大王在假装进步流量来源与笔记表现截图",
+        placeholder: "流量与笔记数据",
+        aspectRatio: "1280 / 832",
+        caption: "流量来源与笔记表现",
+        layout: "wide",
+      },
+    ],
     notes: [
       {
         id: "big-phone-anxiety",
