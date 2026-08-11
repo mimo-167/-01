@@ -42,7 +42,7 @@ const emptyImage = (alt: string, placeholder: string): PortfolioImage => ({
 export const profile = {
   name: "朱墨",
   englishName: "Momo",
-  personalSiteUrl: "",
+  personalSiteUrl: "https://momo-portfolio.zxkpg.uk/",
   stats: [
     { value: "1.3W+", label: "单账号粉丝" },
     { value: "47.4W", label: "获赞与收藏" },

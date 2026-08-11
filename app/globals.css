@@ -30,6 +30,7 @@
   --line: rgba(28, 30, 27, .28);
   --hand: "Patrick Hand", "Segoe Print", "Bradley Hand", "KaiTi", "STKaiti", "Kaiti SC", cursive;
   --brush: "Knewave", Impact, sans-serif;
+  --portfolio-title: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", "Segoe UI", sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -443,7 +444,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .portfolio-hero { min-height: calc(100svh - 76px); padding-top: 54px; }
 .portfolio-hero .hero-copy { width: min(100%, 980px); }
 .portfolio-hero .hero-eyebrow { margin-bottom: 18px; color: var(--body); letter-spacing: .28em; }
-.portfolio-hero h1 { font-size: clamp(72px, 9vw, 132px); }
+.portfolio-hero h1 { font-family: var(--portfolio-title); font-size: clamp(72px, 9vw, 132px); }
 .portfolio-hero h1 span:nth-child(2) { margin-top: .12em; font-size: .58em; }
 .portfolio-hero .hero-signature { margin: 28px 0 24px; font-size: 15px; letter-spacing: .38em; }
 .hero-metrics {
@@ -460,13 +461,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 .hero-metrics div { min-height: 76px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4px 12px; }
 .hero-metrics div + div { border-left: 1.5px solid var(--line); }
-.hero-metrics strong { font-family: var(--brush); font-size: clamp(31px, 3.4vw, 45px); font-weight: 400; line-height: 1; }
+.hero-metrics strong { font-family: var(--portfolio-title); font-size: clamp(31px, 3.4vw, 45px); font-weight: 400; line-height: 1; }
 .hero-metrics span { margin-top: 7px; color: var(--body); font-size: 15px; letter-spacing: .04em; }
 .portfolio-hero .hero-links { margin-top: 34px; }
 
 .portfolio-section { position: relative; }
 .portfolio-heading { position: relative; max-width: 870px; margin-bottom: 52px; }
-.portfolio-heading h2 { margin: 0; font-family: var(--brush); font-size: clamp(49px, 7vw, 82px); font-weight: 400; line-height: 1; }
+.portfolio-heading h2 { margin: 0; font-family: var(--portfolio-title); font-size: clamp(49px, 7vw, 82px); font-weight: 400; line-height: 1; }
 .portfolio-heading > span { display: block; width: min(390px, 78vw); height: 9px; margin-top: 15px; border-top: 3px solid var(--sage-dark); border-radius: 50%; transform: rotate(-1deg); }
 
 .social-account-list { display: flex; flex-direction: column; gap: 88px; }

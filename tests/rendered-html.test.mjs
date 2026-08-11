@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { access, readFile } from "node:fs/promises";
+import { access, readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
 async function render(pathname = "/") {
@@ -18,6 +18,8 @@ test("server-renders the finished portfolio", async () => {
   assert.match(html, /朱墨/);
   assert.match(html, /Momo/);
   assert.match(html, /1\.3W\+/);
+  assert.match(html, /href="https:\/\/momo-portfolio\.zxkpg\.uk\/"/);
+  assert.match(html, /href="\/resume-zhu-mo\.pdf" download="朱墨简历2026-游戏\.pdf"/);
   assert.match(html, /小红书作品/);
   assert.match(html, /比格大王在假装进步/);
   assert.match(html, /SHE进化论/);
@@ -138,7 +140,12 @@ test("renders the supplied women-oriented writing as readable text", async () =>
 
 test("ships editable content and downloadable artifacts", async () => {
   const packageJson = await readFile(new URL("../package.json", import.meta.url), "utf8");
+  const stylesheet = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
+  assert.match(stylesheet, /--portfolio-title:/);
+  assert.match(stylesheet, /\.portfolio-hero h1 \{ font-family: var\(--portfolio-title\)/);
+  assert.match(stylesheet, /\.hero-metrics strong \{ font-family: var\(--portfolio-title\)/);
+  assert.match(stylesheet, /\.portfolio-heading h2 \{ margin: 0; font-family: var\(--portfolio-title\)/);
   await Promise.all([
     access(new URL("../content/writing/rainy-night-platform.md", import.meta.url)),
     access(new URL("../content/analysis/how-romantic-scene-works.md", import.meta.url)),
@@ -151,5 +158,7 @@ test("ships editable content and downloadable artifacts", async () => {
     access(new URL("../public/resume-zhu-mo.pdf", import.meta.url)),
     access(new URL("../public/og.png", import.meta.url)),
   ]);
+  const resumeFile = await stat(new URL("../public/resume-zhu-mo.pdf", import.meta.url));
+  assert.ok(resumeFile.size > 200_000);
   await assert.rejects(access(new URL("../app/_sites-preview/SkeletonPreview.tsx", import.meta.url)));
 });

@@ -124,7 +124,7 @@ export default function Home() {
           </div>
           <nav className="hero-links" aria-label="首页快速入口">
             <OptionalLink className="hero-action" href={profile.personalSiteUrl}><b aria-hidden="true">▱</b>查看个人网站</OptionalLink>
-            <a className="hero-action" href="/resume-zhu-mo.pdf" target="_blank" rel="noreferrer"><b aria-hidden="true">▧</b>查看简历</a>
+            <a className="hero-action" href="/resume-zhu-mo.pdf" download="朱墨简历2026-游戏.pdf"><b aria-hidden="true">▧</b>查看简历</a>
             <a className="hero-action" href="#contact"><b aria-hidden="true">♡</b>联系我</a>
           </nav>
         </div>
