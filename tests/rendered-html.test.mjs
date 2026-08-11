@@ -150,7 +150,14 @@ test("opens every selected Xiaohongshu note inside the portfolio", async () => {
     assert.match(await notePage.text(), new RegExp(imageName));
   }
   const galleryNote = await render("/xiaohongshu/snack-xiha");
-  assert.match(await galleryNote.text(), /object-fit:contain/);
+  const galleryNoteHtml = await galleryNote.text();
+  assert.match(galleryNoteHtml, /object-fit:contain/);
+  assert.match(galleryNoteHtml, /class="xhs-carousel-stage"/);
+  assert.match(galleryNoteHtml, /aria-label="查看上一张图片"/);
+  assert.match(galleryNoteHtml, /aria-label="查看下一张图片"/);
+  assert.match(galleryNoteHtml, /aria-live="polite">01[\s\S]{0,40}?13<\/span>/);
+  assert.doesNotMatch(galleryNoteHtml, /FULL GALLERY \/ 全部图片/);
+  assert.equal((galleryNoteHtml.match(/class="xhs-carousel-image/g) ?? []).length, 13);
 
   const videoNote = await render("/xiaohongshu/she-growth");
   const videoNoteHtml = await videoNote.text();

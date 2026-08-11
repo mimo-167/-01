@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { socialAccounts, type PortfolioImage } from "../../portfolio-data";
+import { socialAccounts } from "../../portfolio-data";
 import { socialNoteDetails } from "../../xiaohongshu-note-content";
+import { XhsImageCarousel } from "./XhsImageCarousel";
 
 const allNotes = socialAccounts.flatMap((account) =>
   account.notes.map((note) => ({ account, note })),
@@ -11,29 +11,6 @@ const allNotes = socialAccounts.flatMap((account) =>
 
 function findNote(noteId: string) {
   return allNotes.find(({ note }) => note.id === noteId);
-}
-
-function NoteImage({ image, priority = false }: { image: PortfolioImage; priority?: boolean }) {
-  if (!image.src) {
-    return (
-      <div className="xhs-detail-placeholder" role="img" aria-label={image.alt}>
-        <span aria-hidden="true">▧</span>
-        <p>{image.placeholder}</p>
-      </div>
-    );
-  }
-
-  return (
-    <Image
-      src={image.src}
-      alt={image.alt}
-      fill
-      sizes="(max-width: 760px) 94vw, 720px"
-      priority={priority}
-      style={{ objectFit: "contain" }}
-      unoptimized
-    />
-  );
 }
 
 export function generateStaticParams() {
@@ -67,8 +44,7 @@ export default async function XiaohongshuNotePage({
   if (!item || !detail) notFound();
 
   const { account, note } = item;
-  const heroImage = detail.images[0] ?? note.cover;
-  const galleryImages = detail.images.slice(1);
+  const carouselImages = detail.images.length ? detail.images : [note.cover];
 
   return (
     <main id="main" className="xhs-detail-page">
@@ -95,15 +71,7 @@ export default async function XiaohongshuNotePage({
             </video>
           </section>
         ) : (
-          <section className="xhs-cover-section" aria-labelledby="xhs-cover-heading">
-            <p className="eyebrow" id="xhs-cover-heading">COVER / 01</p>
-            <div
-              className={`xhs-detail-image ${heroImage.src ? "" : "is-placeholder"}`}
-              style={heroImage.aspectRatio ? { aspectRatio: heroImage.aspectRatio } : undefined}
-            >
-              <NoteImage image={heroImage} priority />
-            </div>
-          </section>
+          <XhsImageCarousel images={carouselImages} title={note.title} />
         )}
 
         {detail.notice ? <aside className="xhs-note-notice">{detail.notice}</aside> : null}
@@ -116,25 +84,6 @@ export default async function XiaohongshuNotePage({
             ))}
           </div>
         </section>
-
-        {galleryImages.length ? (
-          <section className="xhs-gallery-section" aria-labelledby="xhs-gallery-heading">
-            <p className="eyebrow" id="xhs-gallery-heading">FULL GALLERY / 全部图片</p>
-            <div className="xhs-detail-gallery">
-              {galleryImages.map((image, index) => (
-                <figure key={image.src}>
-                  <div
-                    className="xhs-detail-image"
-                    style={image.aspectRatio ? { aspectRatio: image.aspectRatio } : undefined}
-                  >
-                    <NoteImage image={image} />
-                  </div>
-                  <figcaption>{String(index + 2).padStart(2, "0")} / {String(detail.images.length).padStart(2, "0")}</figcaption>
-                </figure>
-              ))}
-            </div>
-          </section>
-        ) : null}
 
         <footer className="xhs-detail-footer">
           <Link className="button button-paper" href="/#xiaohongshu">返回作品集</Link>
