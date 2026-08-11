@@ -86,6 +86,19 @@ test("server-renders the finished portfolio", async () => {
   assert.match(html, /温柔到几乎无底线的小叔叔/);
   assert.doesNotMatch(html, /作品封面 \/ 代表截图|聊天记录 \/ 代表截图/);
   assert.match(html, /AI 塔罗在线占卜网站/);
+  assert.match(html, /href="https:\/\/tarot\.zxkpg\.uk\/"/);
+  for (const imageName of [
+    "tarot-home.png",
+    "tarot-spreads.png",
+    "tarot-blog.png",
+    "tarot-card-selection.png",
+    "tarot-future-lover.png",
+  ]) {
+    assert.match(html, new RegExp(`/portfolio/products/${imageName}`));
+  }
+  assert.equal((html.match(/class="product-shot-item product-shot-/g) ?? []).length, 4);
+  assert.match(html, /product-shot-feature/);
+  assert.match(html, /product-shot-portrait/);
   assert.match(html, /简历与联系方式/);
   assert.doesNotMatch(html, /Case Study|Coming Soon|游戏观察/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|Your site is taking shape/);
@@ -159,6 +172,23 @@ test("一颗栗子酥第二篇笔记的七张图可解码且不是灰屏", async
   }
 });
 
+test("AI 塔罗的五张页面截图可解码且保留真实尺寸", async () => {
+  const screenshots = [
+    ["tarot-home.png", 2160, 1187],
+    ["tarot-spreads.png", 2160, 1187],
+    ["tarot-blog.png", 2160, 1187],
+    ["tarot-card-selection.png", 2160, 1187],
+    ["tarot-future-lover.png", 1080, 1350],
+  ];
+
+  for (const [name, width, height] of screenshots) {
+    const imageFile = new URL(`../public/portfolio/products/${name}`, import.meta.url);
+    const image = await loadImage(await readFile(imageFile));
+    assert.equal(image.width, width);
+    assert.equal(image.height, height);
+  }
+});
+
 test("renders the supplied women-oriented writing as readable text", async () => {
   const works = [
     ["/women-writing/ng-am-i-the-first", "NG：我是第一个被你这样对待的吗", "哪怕再疼痛再难耐"],
@@ -196,6 +226,11 @@ test("ships editable content and downloadable artifacts", async () => {
     access(new URL("../作品集/女性向文本创作/原创/GB温柔到几乎无底线的小叔叔1.txt", import.meta.url)),
     access(new URL("../public/resume-zhu-mo.pdf", import.meta.url)),
     access(new URL("../public/og.png", import.meta.url)),
+    access(new URL("../public/portfolio/products/tarot-home.png", import.meta.url)),
+    access(new URL("../public/portfolio/products/tarot-spreads.png", import.meta.url)),
+    access(new URL("../public/portfolio/products/tarot-blog.png", import.meta.url)),
+    access(new URL("../public/portfolio/products/tarot-card-selection.png", import.meta.url)),
+    access(new URL("../public/portfolio/products/tarot-future-lover.png", import.meta.url)),
   ]);
   const resumeFile = await stat(new URL("../public/resume-zhu-mo.pdf", import.meta.url));
   assert.ok(resumeFile.size > 200_000);

@@ -215,7 +215,17 @@ export default function Home() {
             <MediaFrame image={product.hero} className="product-hero-shot" sizes="(max-width: 760px) 100vw, 1100px" />
             <div className="product-shot-grid">
               {product.screenshots.map((screenshot, index) => (
-                <MediaFrame key={screenshot.placeholder} image={screenshot} className={`product-core-shot rotate-${index % 3}`} sizes="(max-width: 640px) 100vw, 360px" />
+                <figure className={`product-shot-item product-shot-${screenshot.layout} rotate-${index % 3}`} key={screenshot.src}>
+                  <MediaFrame
+                    image={screenshot}
+                    className="product-core-shot"
+                    sizes={screenshot.layout === "portrait" ? "(max-width: 640px) 82vw, 360px" : "(max-width: 840px) 100vw, 720px"}
+                  />
+                  <figcaption>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    {screenshot.caption}
+                  </figcaption>
+                </figure>
               ))}
             </div>
           </article>

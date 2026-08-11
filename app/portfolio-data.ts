@@ -10,6 +10,11 @@ export type PortfolioEvidence = PortfolioImage & {
   layout: "portrait" | "wide";
 };
 
+export type ProductScreenshot = PortfolioImage & {
+  caption: string;
+  layout: "wide" | "feature" | "portrait";
+};
+
 export type SocialNote = {
   id: string;
   title: string;
@@ -348,13 +353,47 @@ export const productWorks = [
     id: "ai-tarot",
     title: "AI 塔罗在线占卜网站",
     tags: ["AI", "Web", "Product"],
-    url: "",
-    hero: emptyImage("AI 塔罗在线占卜网站首页", "网站首页大截图"),
+    url: "https://tarot.zxkpg.uk/",
+    hero: {
+      src: "/portfolio/products/tarot-home.png",
+      alt: "星月塔罗网站首页，展示月亮、星空与塔罗牌主视觉",
+      placeholder: "星月塔罗网站首页",
+      aspectRatio: "2160 / 1187",
+    },
     screenshots: [
-      emptyImage("AI 塔罗网站核心页面一", "核心页面截图 01"),
-      emptyImage("AI 塔罗网站核心页面二", "核心页面截图 02"),
-      emptyImage("AI 塔罗网站核心页面三", "核心页面截图 03"),
-    ],
+      {
+        src: "/portfolio/products/tarot-spreads.png",
+        alt: "星月塔罗牌阵选择页面",
+        placeholder: "牌阵选择页面",
+        aspectRatio: "2160 / 1187",
+        caption: "牌阵选择",
+        layout: "wide",
+      },
+      {
+        src: "/portfolio/products/tarot-blog.png",
+        alt: "星月塔罗博客文章列表页面",
+        placeholder: "塔罗博客页面",
+        aspectRatio: "2160 / 1187",
+        caption: "塔罗博客",
+        layout: "wide",
+      },
+      {
+        src: "/portfolio/products/tarot-card-selection.png",
+        alt: "未来恋人塔罗占卜的沉浸式选牌页面",
+        placeholder: "互动选牌页面",
+        aspectRatio: "2160 / 1187",
+        caption: "沉浸式互动选牌",
+        layout: "feature",
+      },
+      {
+        src: "/portfolio/products/tarot-future-lover.png",
+        alt: "星月塔罗未来恋人占卜结果分享长图",
+        placeholder: "未来恋人结果长图",
+        aspectRatio: "1080 / 1350",
+        caption: "占卜结果分享长图",
+        layout: "portrait",
+      },
+    ] satisfies ProductScreenshot[],
   },
 ];
 
