@@ -75,7 +75,10 @@ test("opens every selected Xiaohongshu note inside the portfolio", async () => {
   }
 
   const linkedNote = await render("/xiaohongshu/big-phone-anxiety");
-  assert.match(await linkedNote.text(), /前往小红书查看原笔记/);
+  const linkedNoteHtml = await linkedNote.text();
+  assert.match(linkedNoteHtml, /前往小红书查看原笔记/);
+  const galleryNote = await render("/xiaohongshu/snack-xiha");
+  assert.match(await galleryNote.text(), /object-fit:contain/);
 });
 
 test("renders the supplied women-oriented writing as readable text", async () => {

@@ -30,6 +30,7 @@ function NoteImage({ image, priority = false }: { image: PortfolioImage; priorit
       fill
       sizes="(max-width: 760px) 94vw, 720px"
       priority={priority}
+      style={{ objectFit: "contain" }}
       unoptimized
     />
   );
