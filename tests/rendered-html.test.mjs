@@ -93,7 +93,7 @@ test("opens every selected Xiaohongshu note inside the portfolio", async () => {
     ["big-interview-mindset", "面试心态", "8735", "自我探索的工作坊"],
     ["she-growth", "看着自己成长", "4863", "视频文件暂不上传"],
     ["chestnut-independent-girlfriend", "女朋友突然开始独立", "9770", "chestnut-independent-12.jpeg"],
-    ["chestnut-game-return", "退游后", "2678", "chestnut-game-return-07.jpeg"],
+    ["chestnut-game-return", "退游后", "2678", "chestnut-game-return-07.png"],
     ["quiet-confession-letters", "告白信合集", "1.1万", "quiet-confession-06.webp"],
     ["reading-bankrupt-heir", "高富帅破产后", "2741", "我的帝王生涯"],
     ["reading-white-paper", "一张白纸价值10万", "5834", "看不见的收藏"],

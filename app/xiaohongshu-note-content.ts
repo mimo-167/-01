@@ -165,7 +165,7 @@ export const socialNoteDetails: Record<string, SocialNoteDetail> = {
   },
   "chestnut-game-return": {
     publishedAt: "2025-09-12",
-    images: imageSeries("chestnut-game-return", 7, "jpeg", "退游后，你推来找你了原笔记图片", "1080 / 1440"),
+    images: imageSeries("chestnut-game-return", 7, "png", "退游后，你推来找你了原笔记图片", "1080 / 1440"),
     body: `退游后，你推来找你了
 
 灵感来源：《不存在的恋人》
