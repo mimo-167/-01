@@ -359,7 +359,7 @@ export const productWorks = [
 ];
 
 export const contact = {
-  email: "邮箱待补充",
-  emailUrl: "",
-  phone: "",
+  email: "zhum57@mail2.sysu.edu.cn",
+  emailUrl: "mailto:zhum57@mail2.sysu.edu.cn",
+  phone: "13245799217",
 };

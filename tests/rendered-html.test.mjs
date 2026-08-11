@@ -21,6 +21,10 @@ test("server-renders the finished portfolio", async () => {
   assert.match(html, /1\.3W\+/);
   assert.match(html, /href="https:\/\/momo-portfolio\.zxkpg\.uk\/"/);
   assert.match(html, /href="\/resume-zhu-mo\.pdf" download="朱墨简历2026-游戏\.pdf"/);
+  assert.match(html, /class="resume-actions"[\s\S]{0,240}?下载简历 PDF/);
+  assert.doesNotMatch(html, /class="resume-actions"[\s\S]{0,240}?查看简历/);
+  assert.match(html, /href="mailto:zhum57@mail2\.sysu\.edu\.cn"/);
+  assert.match(html, /13245799217/);
   assert.match(html, /小红书作品/);
   assert.match(html, /比格大王在假装进步/);
   assert.match(html, /SHE进化论/);

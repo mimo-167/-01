@@ -227,8 +227,7 @@ export default function Home() {
         <p className="eyebrow">04 / RESUME & CONTACT</p>
         <h2>简历与联系方式</h2>
         <div className="resume-actions">
-          <a className="button button-dark" href="/resume-zhu-mo.pdf" target="_blank" rel="noreferrer">查看简历 ↗</a>
-          <a className="button button-paper" href="/resume-zhu-mo.pdf" download>下载 PDF ↓</a>
+          <a className="button button-dark" href="/resume-zhu-mo.pdf" download>下载简历 PDF ↓</a>
         </div>
         <div className="contact-paper" id="contact">
           <span>EMAIL</span>
