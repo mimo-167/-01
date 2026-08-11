@@ -2,6 +2,7 @@ export type PortfolioImage = {
   src: string;
   alt: string;
   placeholder: string;
+  aspectRatio?: string;
 };
 
 export type SocialNote = {
@@ -58,11 +59,13 @@ export const socialAccounts: SocialAccount[] = [
       src: "/portfolio/xiaohongshu/big-profile.png",
       alt: "比格大王在假装进步小红书账号首页截图",
       placeholder: "账号首页截图",
+      aspectRatio: "1080 / 2414",
     },
     performance: {
       src: "/portfolio/xiaohongshu/big-performance.jpg",
       alt: "比格大王在假装进步账号粉丝分析核心指标截图",
       placeholder: "账号阶段数据原始截图",
+      aspectRatio: "1638 / 476",
     },
     notes: [
       {
@@ -115,6 +118,7 @@ export const socialAccounts: SocialAccount[] = [
       src: "/portfolio/xiaohongshu/she-profile.jpg",
       alt: "SHE进化论小红书账号首页截图",
       placeholder: "账号首页截图",
+      aspectRatio: "1080 / 2414",
     },
     notes: [
       {
@@ -140,6 +144,7 @@ export const socialAccounts: SocialAccount[] = [
       src: "/portfolio/xiaohongshu/chestnut-profile.jpg",
       alt: "一颗栗子酥小红书账号首页截图",
       placeholder: "账号首页截图",
+      aspectRatio: "1080 / 2414",
     },
     notes: [
       {
@@ -149,6 +154,7 @@ export const socialAccounts: SocialAccount[] = [
           src: "/portfolio/xiaohongshu/chestnut-independent.jpeg",
           alt: "爱黏人的女朋友突然开始独立了笔记截图",
           placeholder: "代表笔记封面",
+          aspectRatio: "1080 / 1440",
         },
         likes: "9770",
         favorites: "1356",
@@ -178,6 +184,7 @@ export const socialAccounts: SocialAccount[] = [
       src: "/portfolio/xiaohongshu/quiet-profile.jpg",
       alt: "她也不爱说话小红书账号首页截图",
       placeholder: "账号首页截图",
+      aspectRatio: "1080 / 2414",
     },
     notes: [
       {
@@ -187,6 +194,7 @@ export const socialAccounts: SocialAccount[] = [
           src: "/portfolio/xiaohongshu/quiet-confession.webp",
           alt: "告白信合集总有一封属于你笔记截图",
           placeholder: "代表笔记封面",
+          aspectRatio: "1080 / 1443",
         },
         likes: "1.1万",
         favorites: "6091",
@@ -212,6 +220,7 @@ export const socialAccounts: SocialAccount[] = [
           src: "/portfolio/xiaohongshu/reading-rich.jpeg",
           alt: "高富帅破产后和跟班小弟在一起了笔记截图",
           placeholder: "代表笔记封面",
+          aspectRatio: "1080 / 1058",
         },
         likes: "2741",
         favorites: "813",
@@ -225,6 +234,7 @@ export const socialAccounts: SocialAccount[] = [
           src: "/portfolio/xiaohongshu/reading-paper.jpeg",
           alt: "鉴宝专家说我爸收藏的一张白纸价值10万笔记截图",
           placeholder: "代表笔记封面",
+          aspectRatio: "727 / 727",
         },
         likes: "5834",
         favorites: "593",
@@ -250,6 +260,7 @@ export const socialAccounts: SocialAccount[] = [
           src: "/portfolio/xiaohongshu/snack-xiha.png",
           alt: "女人中的女人嘻哈硬刚酒桌骚扰笔记截图",
           placeholder: "代表笔记封面",
+          aspectRatio: "1080 / 1443",
         },
         likes: "1.2万",
         favorites: "571",
@@ -263,6 +274,7 @@ export const socialAccounts: SocialAccount[] = [
           src: "/portfolio/xiaohongshu/snack-shuqi.png",
           alt: "舒淇那些创伤一直在但我不再会被困住了笔记截图",
           placeholder: "代表笔记封面",
+          aspectRatio: "1210 / 1080",
         },
         likes: "1.5万",
         favorites: "2803",

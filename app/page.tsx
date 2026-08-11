@@ -21,9 +21,19 @@ function MediaFrame({
   sizes?: string;
 }) {
   return (
-    <div className={`portfolio-media ${className}`}>
+    <div
+      className={`portfolio-media ${className}`}
+      style={image.aspectRatio ? { aspectRatio: image.aspectRatio } : undefined}
+    >
       {image.src ? (
-        <Image src={image.src} alt={image.alt} fill sizes={sizes} unoptimized />
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          sizes={sizes}
+          style={{ objectFit: "contain" }}
+          unoptimized
+        />
       ) : (
         <div className="media-placeholder" role="img" aria-label={`${image.alt}，素材待补充`}>
           <span aria-hidden="true">▧</span>

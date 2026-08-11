@@ -483,7 +483,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .social-account-paper:nth-child(even) .paper-tape { left: auto; right: 9%; transform: rotate(4deg); }
 .social-account-head { display: grid; grid-template-columns: minmax(280px, .9fr) 1.1fr; gap: clamp(34px, 6vw, 76px); align-items: center; }
 .portfolio-media { position: relative; overflow: hidden; background: var(--paper-deep); }
-.portfolio-media > img { object-fit: cover; }
+.portfolio-media > img { object-fit: contain; }
 .media-placeholder {
   position: absolute;
   inset: 0;

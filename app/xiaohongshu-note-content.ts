@@ -12,10 +12,12 @@ const imageSeries = (
   count: number,
   extension: "jpeg" | "png" | "webp",
   alt: string,
+  aspectRatio: string | string[],
 ): PortfolioImage[] => Array.from({ length: count }, (_, index) => ({
   src: `/portfolio/xiaohongshu/${prefix}-${String(index + 1).padStart(2, "0")}.${extension}`,
   alt: `${alt}（${index + 1}/${count}）`,
   placeholder: `正文图片 ${index + 1}`,
+  aspectRatio: Array.isArray(aspectRatio) ? aspectRatio[index] : aspectRatio,
 }));
 
 export const socialNoteDetails: Record<string, SocialNoteDetail> = {
@@ -140,14 +142,14 @@ export const socialNoteDetails: Record<string, SocialNoteDetail> = {
   },
   "chestnut-independent-girlfriend": {
     publishedAt: "2025-08-20",
-    images: imageSeries("chestnut-independent", 12, "jpeg", "爱黏人的女朋友突然开始独立了 2 原笔记图片"),
+    images: imageSeries("chestnut-independent", 12, "jpeg", "爱黏人的女朋友突然开始独立了 2 原笔记图片", "1080 / 1440"),
     body: `爱黏人的女朋友突然开始独立了 2
 
 #聊天记录 #代餐文学 #同人产粮节 #追妻火葬场 #小说 #代餐`,
   },
   "chestnut-game-return": {
     publishedAt: "2025-09-12",
-    images: imageSeries("chestnut-game-return", 7, "jpeg", "退游后，你推来找你了原笔记图片"),
+    images: imageSeries("chestnut-game-return", 7, "jpeg", "退游后，你推来找你了原笔记图片", "1080 / 1440"),
     body: `退游后，你推来找你了
 
 灵感来源：《不存在的恋人》
@@ -156,14 +158,14 @@ export const socialNoteDetails: Record<string, SocialNoteDetail> = {
   },
   "quiet-confession-letters": {
     publishedAt: "2025-08-24",
-    images: imageSeries("quiet-confession", 6, "webp", "告白信合集：总有一封属于你原笔记图片"),
+    images: imageSeries("quiet-confession", 6, "webp", "告白信合集：总有一封属于你原笔记图片", "1080 / 1443"),
     body: `我有一件不可告人的心事，关于你。
 
 #感情 #关于感情 #情书 #写信 #表白`,
   },
   "reading-bankrupt-heir": {
     publishedAt: "2025-09-12",
-    images: imageSeries("reading-rich", 1, "jpeg", "高富帅破产后，和跟班小弟在一起了原笔记图片"),
+    images: imageSeries("reading-rich", 1, "jpeg", "高富帅破产后，和跟班小弟在一起了原笔记图片", "1080 / 1058"),
     body: `这件事是我在饭局上听来的。我一个不算太熟的朋友以前和那个高富帅家里做过生意，所以知道一些内情，就跟我们讲了那个高富帅破产后和小弟的爱恨情仇。
 
 两人与其说是在一起，倒不如说是扭曲的关系。高富帅以前是个顶级富二代，家里是那种能上财经新闻的豪门，但他这个少爷没有实权，家里真正的掌权人是他奶奶。小弟呢，是他家司机的儿子，从小就被安排给高富帅做陪读兼跟班。
@@ -184,7 +186,7 @@ export const socialNoteDetails: Record<string, SocialNoteDetail> = {
   },
   "reading-white-paper": {
     publishedAt: "2025-11-03",
-    images: imageSeries("reading-paper", 1, "jpeg", "鉴宝专家说我爸收藏的一张白纸价值10万原笔记图片"),
+    images: imageSeries("reading-paper", 1, "jpeg", "鉴宝专家说我爸收藏的一张白纸价值10万原笔记图片", "727 / 727"),
     body: `我爸是个美术老师，他特别喜欢收藏那些古典名画。那些画被他分门别类放得很整齐，每一幅画都能说得头头是道，他每天都要去书房看自己收藏的画。
 
 但很不幸，我爸几年前生了一场大病。为了凑齐治疗费，我们不得不卖了好多他心爱的画作。治疗过程中为了照顾我爸，妈妈也辞职了。家里没了经济来源，为了维持生活和昂贵的住院费，我们不得不一张张把剩下的画卖完了。
@@ -201,7 +203,7 @@ export const socialNoteDetails: Record<string, SocialNoteDetail> = {
   },
   "snack-xiha": {
     publishedAt: "2025-08-18",
-    images: imageSeries("snack-xiha", 13, "png", "女人中的女人！嘻哈硬刚酒桌骚扰原笔记图片"),
+    images: imageSeries("snack-xiha", 13, "png", "女人中的女人！嘻哈硬刚酒桌骚扰原笔记图片", "1080 / 1443"),
     body: `领导一句轻佻的“空姐来了，空姐都很会喝酒”，瞬间将空乘服务行业钉在充满性暗示的刻板印象柱上。
 
 这不仅是对职业的贬低，更是对女性个体价值的抹杀，揭示了权力上位者如何将女性视为可供调笑的服务者与点缀品。
@@ -222,7 +224,13 @@ export const socialNoteDetails: Record<string, SocialNoteDetail> = {
   },
   "snack-shuqi": {
     publishedAt: "2025-11-17",
-    images: imageSeries("snack-shuqi", 10, "png", "舒淇：那些创伤一直在，但我不再会被困住了原笔记图片"),
+    images: imageSeries(
+      "snack-shuqi",
+      10,
+      "png",
+      "舒淇：那些创伤一直在，但我不再会被困住了原笔记图片",
+      ["1210 / 1080", "1202 / 1080", "1268 / 1080", "1233 / 1080", "1370 / 1080", "1339 / 1080", "1252 / 1080", "1182 / 1080", "1252 / 1080", "1317 / 1080"],
+    ),
     body: `舒淇的声音很轻，像在叙述别人的故事。
 
 衣柜、摩托车的声响、母亲送完便当后的一记耳光，这些构成她童年的碎片，被她平静地拾起，然后轻轻放在那儿。

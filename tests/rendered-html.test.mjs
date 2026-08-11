@@ -31,6 +31,9 @@ test("server-renders the finished portfolio", async () => {
   assert.doesNotMatch(html, /href="https:\/\/www\.xiaohongshu\.com\/explore\//);
   assert.match(html, /src="\/portfolio\/xiaohongshu\/big-profile\.png"/);
   assert.match(html, /src="\/portfolio\/xiaohongshu\/big-performance\.jpg"/);
+  assert.match(html, /aspect-ratio:1080 \/ 2414/);
+  assert.match(html, /aspect-ratio:1638 \/ 476/);
+  assert.match(html, /object-fit:contain/);
   assert.doesNotMatch(html, /\/_vinext\/image\?/);
   assert.match(html, /女性向文字作品/);
   assert.match(html, /NG：我是第一个被你这样对待的吗/);

@@ -88,7 +88,10 @@ export default async function XiaohongshuNotePage({
         <span className="paper-tape" aria-hidden="true" />
         <section className="xhs-cover-section" aria-labelledby="xhs-cover-heading">
           <p className="eyebrow" id="xhs-cover-heading">COVER / 01</p>
-          <div className={`xhs-detail-image ${heroImage.src ? "" : "is-placeholder"}`}>
+          <div
+            className={`xhs-detail-image ${heroImage.src ? "" : "is-placeholder"}`}
+            style={heroImage.aspectRatio ? { aspectRatio: heroImage.aspectRatio } : undefined}
+          >
             <NoteImage image={heroImage} priority />
           </div>
         </section>
@@ -110,7 +113,12 @@ export default async function XiaohongshuNotePage({
             <div className="xhs-detail-gallery">
               {galleryImages.map((image, index) => (
                 <figure key={image.src}>
-                  <div className="xhs-detail-image"><NoteImage image={image} /></div>
+                  <div
+                    className="xhs-detail-image"
+                    style={image.aspectRatio ? { aspectRatio: image.aspectRatio } : undefined}
+                  >
+                    <NoteImage image={image} />
+                  </div>
                   <figcaption>{String(index + 2).padStart(2, "0")} / {String(detail.images.length).padStart(2, "0")}</figcaption>
                 </figure>
               ))}
