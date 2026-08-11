@@ -23,7 +23,7 @@ function MediaFrame({
   return (
     <div className={`portfolio-media ${className}`}>
       {image.src ? (
-        <Image src={image.src} alt={image.alt} fill sizes={sizes} />
+        <Image src={image.src} alt={image.alt} fill sizes={sizes} unoptimized />
       ) : (
         <div className="media-placeholder" role="img" aria-label={`${image.alt}，素材待补充`}>
           <span aria-hidden="true">▧</span>

@@ -27,6 +27,9 @@ test("server-renders the finished portfolio", async () => {
   assert.match(html, /电子榨菜品鉴大王/);
   assert.match(html, /宝宝 其实你不喜欢边焦虑边玩手机的 对吗/);
   assert.match(html, /图片稍后补充/);
+  assert.match(html, /src="\/portfolio\/xiaohongshu\/big-profile\.png"/);
+  assert.match(html, /src="\/portfolio\/xiaohongshu\/big-performance\.jpg"/);
+  assert.doesNotMatch(html, /\/_vinext\/image\?/);
   assert.match(html, /女性向文字作品/);
   assert.match(html, /NG：我是第一个被你这样对待的吗/);
   assert.match(html, /这种小三上位的才会最害怕小三啊/);
